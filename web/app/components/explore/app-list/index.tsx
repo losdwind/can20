@@ -201,7 +201,7 @@ const Apps = ({
       </div>
 
       <div className={cn(
-        'relative flex flex-1 pb-6 flex-col overflow-auto bg-gray-100 shrink-0 grow',
+        'relative flex flex-1 pb-6 flex-col overflow-auto bg-background-body shrink-0 grow',
         pageType === PageType.EXPLORE ? 'mt-4' : 'mt-0 pt-2',
       )}>
         <nav

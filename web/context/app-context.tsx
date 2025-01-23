@@ -56,7 +56,7 @@ const initialWorkspaceInfo: ICurrentWorkspace = {
 }
 
 const AppContext = createContext<AppContextValue>({
-  theme: Theme.light,
+  theme: Theme.dark,
   systemFeatures: defaultSystemFeatures,
   setTheme: () => { },
   apps: [],
@@ -127,7 +127,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({ children }) =>
       setCurrentWorkspace(currentWorkspaceResponse)
   }, [currentWorkspaceResponse])
 
-  const [theme, setTheme] = useState<Theme>(Theme.light)
+  const [theme, setTheme] = useState<Theme>(Theme.dark)
   const handleSetTheme = useCallback((theme: Theme) => {
     setTheme(theme)
     globalThis.document.documentElement.setAttribute('data-theme', theme)

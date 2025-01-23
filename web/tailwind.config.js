@@ -112,6 +112,9 @@ const config = {
         '20': '20',
         'mask-top2bottom-gray-50-to-transparent': 'var(--mask-top2bottom-gray-50-to-transparent)',
       },
+      fontFamily:{
+        sans:['Archivo']
+      }
     },
   },
   plugins: [
