@@ -5,8 +5,6 @@
 
 @import '../../themes/light.css';
 @import '../../themes/dark.css';
-@import "../../themes/manual-light.css";
-@import "../../themes/manual-dark.css";
 
 html {
   color-scheme: dark;

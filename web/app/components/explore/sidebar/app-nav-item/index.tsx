@@ -48,8 +48,8 @@ export default function AppNavItem({
       key={id}
       className={cn(
         s.item,
-        isSelected ? s.active : 'hover:bg-gray-200',
-        'flex h-8 items-center justify-between mobile:justify-center px-2 mobile:px-1 rounded-lg text-sm font-normal',
+        isSelected ? 'text-components-main-nav-nav-button-text-active bg-components-main-nav-nav-button-bg-active' : 'text-components-main-nav-nav-button-text hover:bg-components-main-nav-nav-button-bg-hover components-main-nav-nav-button',
+        'flex h-8 items-center justify-between mobile:justify-center px-2 mobile:px-1 rounded-lg text-sm font-normal border-components-main-nav-nav-button-border shadow-xs ',
       )}
       onClick={() => {
         router.push(url) // use Link causes popup item always trigger jump. Can not be solved by e.stopPropagation().

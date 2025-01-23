@@ -5,15 +5,15 @@ export class Theme {
   public chatColorTheme: string | null
   public chatColorThemeInverted: boolean
 
-  public primaryColor = '#1C64F2'
-  public backgroundHeaderColorStyle = 'backgroundImage: linear-gradient(to right, #2563eb, #0ea5e9)'
+  public primaryColor = 'var(--color-components-button-primary-bg)'
+  public backgroundHeaderColorStyle = 'var(--color-background-gradient-bg-fill-chat-bg-1)'
   public headerBorderBottomStyle = ''
-  public colorFontOnHeaderStyle = 'color: white'
-  public colorPathOnHeader = 'white'
-  public backgroundButtonDefaultColorStyle = 'backgroundColor: #1C64F2'
-  public roundedBackgroundColorStyle = 'backgroundColor: rgb(245 248 255)'
-  public chatBubbleColorStyle = 'backgroundColor: rgb(225 239 254)'
-  public chatBubbleColor = 'rgb(225 239 254)'
+  public colorFontOnHeaderStyle = 'var(--color-text-primary-on-surface)'
+  public colorPathOnHeader = 'var(--color-text-primary-on-surface)'
+  public backgroundButtonDefaultColorStyle = 'var(--color-components-button-primary-bg)'
+  public roundedBackgroundColorStyle = 'var(--color-background-gradient-bg-fill-chat-bubble-bg-1)'
+  public chatBubbleColorStyle = 'var(--color-background-gradient-bg-fill-chat-bubble-bg-1)'
+  public chatBubbleColor = 'var(--color-background-gradient-bg-fill-chat-bubble-bg-1)'
 
   constructor(chatColorTheme: string | null = null, chatColorThemeInverted = false) {
     this.chatColorTheme = chatColorTheme
@@ -24,7 +24,7 @@ export class Theme {
 
   private configCustomColor() {
     if (this.chatColorTheme !== null && this.chatColorTheme !== '') {
-      this.primaryColor = this.chatColorTheme ?? '#1C64F2'
+      this.primaryColor = this.chatColorTheme ?? 'var(--color-components-button-primary-bg)'
       this.backgroundHeaderColorStyle = `backgroundColor: ${this.primaryColor}`
       this.backgroundButtonDefaultColorStyle = `backgroundColor: ${this.primaryColor}; color: ${this.colorFontOnHeaderStyle};`
       this.roundedBackgroundColorStyle = `backgroundColor: ${hexToRGBA(this.primaryColor, 0.05)}`
@@ -35,9 +35,9 @@ export class Theme {
 
   private configInvertedColor() {
     if (this.chatColorThemeInverted) {
-      this.backgroundHeaderColorStyle = 'backgroundColor: #ffffff'
+      this.backgroundHeaderColorStyle = 'var(--color-background-default)'
       this.colorFontOnHeaderStyle = `color: ${this.primaryColor}`
-      this.headerBorderBottomStyle = 'borderBottom: 1px solid #ccc'
+      this.headerBorderBottomStyle = 'var(--color-components-panel-border)'
       this.colorPathOnHeader = this.primaryColor
     }
   }
