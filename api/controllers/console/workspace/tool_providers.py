@@ -6,7 +6,7 @@ from flask_restful import Resource, reqparse  # type: ignore
 from sqlalchemy.orm import Session
 from werkzeug.exceptions import Forbidden
 
-from configs import dify_config
+from configs import can20_config
 from controllers.console import api
 from controllers.console.wraps import account_initialization_required, enterprise_license_required, setup_required
 from core.model_runtime.utils.encoders import jsonable_encoder
@@ -122,7 +122,7 @@ class ToolBuiltinProviderIconApi(Resource):
     @setup_required
     def get(self, provider):
         icon_bytes, mimetype = BuiltinToolManageService.get_builtin_tool_provider_icon(provider)
-        icon_cache_max_age = dify_config.TOOL_ICON_CACHE_MAX_AGE
+        icon_cache_max_age = can20_config.TOOL_ICON_CACHE_MAX_AGE
         return send_file(io.BytesIO(icon_bytes), mimetype=mimetype, max_age=icon_cache_max_age)
 
 

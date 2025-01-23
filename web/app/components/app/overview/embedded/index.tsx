@@ -33,7 +33,7 @@ const OPTION_MAP = {
   scripts: {
     getContent: (url: string, token: string, primaryColor: string, isTestEnv?: boolean) =>
       `<script>
- window.difyChatbotConfig = {
+ window.can20ChatbotConfig = {
   token: '${token}'${isTestEnv
   ? `,
   isDev: true`
@@ -49,10 +49,10 @@ const OPTION_MAP = {
  defer>
 </script>
 <style>
-  #dify-chatbot-bubble-button {
+  #can20-chatbot-bubble-button {
     background-color: ${primaryColor} !important;
   }
-  #dify-chatbot-bubble-window {
+  #can20-chatbot-bubble-window {
     width: 24rem !important;
     height: 40rem !important;
   }
@@ -77,10 +77,10 @@ const Embedded = ({ siteInfo, isShow, onClose, appBaseUrl, accessToken, classNam
   const [option, setOption] = useState<Option>('iframe')
   const [isCopied, setIsCopied] = useState<OptionStatus>({ iframe: false, scripts: false, chromePlugin: false })
 
-  const { langeniusVersionInfo } = useAppContext()
+  const { chainainexusVersionInfo } = useAppContext()
   const themeBuilder = useThemeContext()
   themeBuilder.buildTheme(siteInfo?.chat_color_theme ?? null, siteInfo?.chat_color_theme_inverted ?? false)
-  const isTestEnv = langeniusVersionInfo.current_env === 'TESTING' || langeniusVersionInfo.current_env === 'DEVELOPMENT'
+  const isTestEnv = chainainexusVersionInfo.current_env === 'TESTING' || chainainexusVersionInfo.current_env === 'DEVELOPMENT'
   const onClickCopy = () => {
     if (option === 'chromePlugin') {
       const splitUrl = OPTION_MAP[option].getContent(appBaseUrl, accessToken).split(': ')
@@ -103,7 +103,7 @@ const Embedded = ({ siteInfo, isShow, onClose, appBaseUrl, accessToken, classNam
   }
 
   const navigateToChromeUrl = () => {
-    window.open('https://chrome.google.com/webstore/detail/dify-chatbot/ceehdapohffmjmkdcifjofadiaoeggaf', '_blank')
+    window.open('https://chrome.google.com/webstore/detail/can20-chatbot/ceehdapohffmjmkdcifjofadiaoeggaf', '_blank')
   }
 
   useEffect(() => {

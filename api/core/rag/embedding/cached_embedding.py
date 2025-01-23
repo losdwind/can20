@@ -5,7 +5,7 @@ from typing import Any, Optional, cast
 import numpy as np
 from sqlalchemy.exc import IntegrityError
 
-from configs import dify_config
+from configs import can20_config
 from core.entities.embedding_type import EmbeddingInputType
 from core.model_manager import ModelInstance
 from core.model_runtime.entities.model_entities import ModelPropertyKey
@@ -121,7 +121,7 @@ class CacheEmbedding(Embeddings):
             if np.isnan(embedding_results).any():
                 raise ValueError("Normalized embedding is nan please try again")
         except Exception as ex:
-            if dify_config.DEBUG:
+            if can20_config.DEBUG:
                 logging.exception(f"Failed to embed query text '{text[:10]}...({len(text)} chars)'")
             raise ex
 
@@ -135,7 +135,7 @@ class CacheEmbedding(Embeddings):
             encoded_str = encoded_vector.decode("utf-8")
             redis_client.setex(embedding_cache_key, 600, encoded_str)
         except Exception as ex:
-            if dify_config.DEBUG:
+            if can20_config.DEBUG:
                 logging.exception(f"Failed to add embedding to redis for the text '{text[:10]}...({len(text)} chars)'")
             raise ex
 

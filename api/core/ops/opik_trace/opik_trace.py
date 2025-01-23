@@ -38,7 +38,7 @@ def wrap_dict(key_name, data):
 
 def wrap_metadata(metadata, **kwargs):
     """Add common metatada to all Traces and Spans"""
-    metadata["created_from"] = "dify"
+    metadata["created_from"] = "can20"
 
     metadata.update(kwargs)
 
@@ -46,7 +46,7 @@ def wrap_metadata(metadata, **kwargs):
 
 
 def prepare_opik_uuid(user_datetime: Optional[datetime], user_uuid: Optional[str]):
-    """Opik needs UUIDv7 while Dify uses UUIDv4 for identifier of most
+    """Opik needs UUIDv7 while CAN20 uses UUIDv4 for identifier of most
     messages and objects. The type-hints of BaseTraceInfo indicates that
     objects start_time and message_id could be null which means we cannot map
     it to a UUIDv7. Given that we have no way to identify that object
@@ -94,16 +94,16 @@ class OpikDataTrace(BaseTraceInstance):
             self.generate_name_trace(trace_info)
 
     def workflow_trace(self, trace_info: WorkflowTraceInfo):
-        dify_trace_id = trace_info.workflow_run_id
-        opik_trace_id = prepare_opik_uuid(trace_info.start_time, dify_trace_id)
+        can20_trace_id = trace_info.workflow_run_id
+        opik_trace_id = prepare_opik_uuid(trace_info.start_time, can20_trace_id)
         workflow_metadata = wrap_metadata(
             trace_info.metadata, message_id=trace_info.message_id, workflow_app_log_id=trace_info.workflow_app_log_id
         )
         root_span_id = None
 
         if trace_info.message_id:
-            dify_trace_id = trace_info.message_id
-            opik_trace_id = prepare_opik_uuid(trace_info.start_time, dify_trace_id)
+            can20_trace_id = trace_info.message_id
+            opik_trace_id = prepare_opik_uuid(trace_info.start_time, can20_trace_id)
 
             trace_data = {
                 "id": opik_trace_id,

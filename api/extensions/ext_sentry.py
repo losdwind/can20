@@ -1,9 +1,9 @@
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
-    if dify_config.SENTRY_DSN:
+def init_app(app: CAN20App):
+    if can20_config.SENTRY_DSN:
         import openai
         import sentry_sdk
         from langfuse import parse_error  # type: ignore
@@ -22,7 +22,7 @@ def init_app(app: DifyApp):
             return event
 
         sentry_sdk.init(
-            dsn=dify_config.SENTRY_DSN,
+            dsn=can20_config.SENTRY_DSN,
             integrations=[FlaskIntegration(), CeleryIntegration()],
             ignore_errors=[
                 HTTPException,
@@ -32,9 +32,9 @@ def init_app(app: DifyApp):
                 InvokeRateLimitError,
                 parse_error.defaultErrorResponse,
             ],
-            traces_sample_rate=dify_config.SENTRY_TRACES_SAMPLE_RATE,
-            profiles_sample_rate=dify_config.SENTRY_PROFILES_SAMPLE_RATE,
-            environment=dify_config.DEPLOY_ENV,
-            release=f"dify-{dify_config.CURRENT_VERSION}-{dify_config.COMMIT_SHA}",
+            traces_sample_rate=can20_config.SENTRY_TRACES_SAMPLE_RATE,
+            profiles_sample_rate=can20_config.SENTRY_PROFILES_SAMPLE_RATE,
+            environment=can20_config.DEPLOY_ENV,
+            release=f"can20-{can20_config.CURRENT_VERSION}-{can20_config.COMMIT_SHA}",
             before_send=before_send,
         )

@@ -5,7 +5,7 @@ from pathlib import Path
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from configs import dify_config
+from configs import can20_config
 from core.helper.position_helper import is_filtered
 from core.model_runtime.utils.encoders import jsonable_encoder
 from core.tools.entities.api_entities import UserTool, UserToolProvider
@@ -211,8 +211,8 @@ class BuiltinToolManageService:
             try:
                 # handle include, exclude
                 if is_filtered(
-                    include_set=dify_config.POSITION_TOOL_INCLUDES_SET,
-                    exclude_set=dify_config.POSITION_TOOL_EXCLUDES_SET,
+                    include_set=can20_config.POSITION_TOOL_INCLUDES_SET,
+                    exclude_set=can20_config.POSITION_TOOL_EXCLUDES_SET,
                     data=provider_controller,
                     name_func=lambda x: x.identity.name,
                 ):

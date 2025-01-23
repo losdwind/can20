@@ -1,6 +1,6 @@
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
-    app.secret_key = dify_config.SECRET_KEY
+def init_app(app: CAN20App):
+    app.secret_key = can20_config.SECRET_KEY

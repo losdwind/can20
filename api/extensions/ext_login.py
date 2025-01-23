@@ -6,7 +6,7 @@ from flask_login import user_loaded_from_request, user_logged_in
 from werkzeug.exceptions import Unauthorized
 
 import contexts
-from dify_app import DifyApp
+from can20_app import CAN20App
 from libs.passport import PassportService
 from services.account_service import AccountService
 
@@ -58,5 +58,5 @@ def unauthorized_handler():
     )
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     login_manager.init_app(app)

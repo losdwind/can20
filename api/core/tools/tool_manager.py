@@ -6,7 +6,7 @@ from os import listdir, path
 from threading import Lock, Thread
 from typing import Any, Optional, Union, cast
 
-from configs import dify_config
+from configs import can20_config
 from core.agent.entities import AgentToolEntity
 from core.app.entities.app_invoke_entities import InvokeFrom
 from core.helper.module_import_helper import load_single_subclass_from_source
@@ -474,8 +474,8 @@ class ToolManager:
                 if provider.identity is None:
                     continue
                 if is_filtered(
-                    include_set=cast(set[str], dify_config.POSITION_TOOL_INCLUDES_SET),
-                    exclude_set=cast(set[str], dify_config.POSITION_TOOL_EXCLUDES_SET),
+                    include_set=cast(set[str], can20_config.POSITION_TOOL_INCLUDES_SET),
+                    exclude_set=cast(set[str], can20_config.POSITION_TOOL_EXCLUDES_SET),
                     data=provider,
                     name_func=lambda x: x.identity.name,
                 ):
@@ -650,7 +650,7 @@ class ToolManager:
         provider: Optional[Union[BuiltinToolProvider, ApiToolProvider, WorkflowToolProvider]] = None
         if provider_type == "builtin":
             return (
-                dify_config.CONSOLE_API_URL
+                can20_config.CONSOLE_API_URL
                 + "/console/api/workspaces/current/tool-provider/builtin/"
                 + provider_id
                 + "/icon"

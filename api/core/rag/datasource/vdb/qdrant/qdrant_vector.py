@@ -19,7 +19,7 @@ from qdrant_client.http.models import (
 )
 from qdrant_client.local.qdrant_local import QdrantLocal
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.field import Field
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
@@ -439,11 +439,11 @@ class QdrantVectorFactory(AbstractVectorFactory):
             collection_name=collection_name,
             group_id=dataset.id,
             config=QdrantConfig(
-                endpoint=dify_config.QDRANT_URL or "",
-                api_key=dify_config.QDRANT_API_KEY,
+                endpoint=can20_config.QDRANT_URL or "",
+                api_key=can20_config.QDRANT_API_KEY,
                 root_path=str(current_app.config.root_path),
-                timeout=dify_config.QDRANT_CLIENT_TIMEOUT,
-                grpc_port=dify_config.QDRANT_GRPC_PORT,
-                prefer_grpc=dify_config.QDRANT_GRPC_ENABLED,
+                timeout=can20_config.QDRANT_CLIENT_TIMEOUT,
+                grpc_port=can20_config.QDRANT_GRPC_PORT,
+                prefer_grpc=can20_config.QDRANT_GRPC_ENABLED,
             ),
         )

@@ -1,7 +1,7 @@
-from dify_app import DifyApp
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     from commands import (
         add_qdrant_doc_id_index,
         convert_to_agent_apps,

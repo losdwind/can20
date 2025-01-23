@@ -12,7 +12,7 @@ from flask_login import UserMixin  # type: ignore
 from sqlalchemy import Float, func, text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from configs import dify_config
+from configs import can20_config
 from core.file import FILE_MODEL_IDENTITY, File, FileTransferMethod, FileType
 from core.file import helpers as file_helpers
 from core.file.tool_file_parser import ToolFileParser
@@ -28,9 +28,9 @@ if TYPE_CHECKING:
     from .workflow import Workflow
 
 
-class DifySetup(db.Model):  # type: ignore[name-defined]
-    __tablename__ = "dify_setups"
-    __table_args__ = (db.PrimaryKeyConstraint("version", name="dify_setup_pkey"),)
+class CAN20Setup(db.Model):  # type: ignore[name-defined]
+    __tablename__ = "can20_setups"
+    __table_args__ = (db.PrimaryKeyConstraint("version", name="can20_setup_pkey"),)
 
     version = db.Column(db.String(255), nullable=False)
     setup_at = db.Column(db.DateTime, nullable=False, server_default=func.current_timestamp())
@@ -127,7 +127,7 @@ class App(db.Model):  # type: ignore[name-defined]
 
     @property
     def api_base_url(self):
-        return (dify_config.SERVICE_API_URL or request.host_url.rstrip("/")) + "/v1"
+        return (can20_config.SERVICE_API_URL or request.host_url.rstrip("/")) + "/v1"
 
     @property
     def tenant(self):
@@ -570,14 +570,14 @@ class Conversation(db.Model):  # type: ignore[name-defined]
             # NOTE: It's not the best way to implement this, but it's the only way to avoid circular import for now.
             from factories import file_factory
 
-            if isinstance(value, dict) and value.get("dify_model_identity") == FILE_MODEL_IDENTITY:
+            if isinstance(value, dict) and value.get("can20_model_identity") == FILE_MODEL_IDENTITY:
                 if value["transfer_method"] == FileTransferMethod.TOOL_FILE:
                     value["tool_file_id"] = value["related_id"]
                 elif value["transfer_method"] == FileTransferMethod.LOCAL_FILE:
                     value["upload_file_id"] = value["related_id"]
                 inputs[key] = file_factory.build_from_mapping(mapping=value, tenant_id=value["tenant_id"])
             elif isinstance(value, list) and all(
-                isinstance(item, dict) and item.get("dify_model_identity") == FILE_MODEL_IDENTITY for item in value
+                isinstance(item, dict) and item.get("can20_model_identity") == FILE_MODEL_IDENTITY for item in value
             ):
                 inputs[key] = []
                 for item in value:
@@ -809,14 +809,14 @@ class Message(db.Model):  # type: ignore[name-defined]
             # NOTE: It's not the best way to implement this, but it's the only way to avoid circular import for now.
             from factories import file_factory
 
-            if isinstance(value, dict) and value.get("dify_model_identity") == FILE_MODEL_IDENTITY:
+            if isinstance(value, dict) and value.get("can20_model_identity") == FILE_MODEL_IDENTITY:
                 if value["transfer_method"] == FileTransferMethod.TOOL_FILE:
                     value["tool_file_id"] = value["related_id"]
                 elif value["transfer_method"] == FileTransferMethod.LOCAL_FILE:
                     value["upload_file_id"] = value["related_id"]
                 inputs[key] = file_factory.build_from_mapping(mapping=value, tenant_id=value["tenant_id"])
             elif isinstance(value, list) and all(
-                isinstance(item, dict) and item.get("dify_model_identity") == FILE_MODEL_IDENTITY for item in value
+                isinstance(item, dict) and item.get("can20_model_identity") == FILE_MODEL_IDENTITY for item in value
             ):
                 inputs[key] = []
                 for item in value:
@@ -1381,7 +1381,7 @@ class Site(db.Model):  # type: ignore[name-defined]
 
     @property
     def app_base_url(self):
-        return dify_config.APP_WEB_URL or request.url_root.rstrip("/")
+        return can20_config.APP_WEB_URL or request.url_root.rstrip("/")
 
 
 class ApiToken(db.Model):  # type: ignore[name-defined]

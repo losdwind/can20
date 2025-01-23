@@ -6,7 +6,7 @@ from typing import Any
 
 from sqlalchemy.orm import DeclarativeMeta
 
-from configs import dify_config
+from configs import can20_config
 from core.app.entities.app_invoke_entities import InvokeFrom
 from core.app.entities.queue_entities import (
     AppQueueEvent,
@@ -48,7 +48,7 @@ class AppQueueManager:
         :return:
         """
         # wait for APP_MAX_EXECUTION_TIME seconds to stop listen
-        listen_timeout = dify_config.APP_MAX_EXECUTION_TIME
+        listen_timeout = can20_config.APP_MAX_EXECUTION_TIME
         start_time = time.time()
         last_ping_time: int | float = 0
         while True:

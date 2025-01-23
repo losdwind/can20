@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 
-from configs import dify_config
+from configs import can20_config
 from core.model_manager import ModelManager
 from core.model_runtime.entities.model_entities import ModelType
 from core.rag.datasource.vdb.vector_base import BaseVector
@@ -35,12 +35,12 @@ class Vector:
         self._vector_processor = self._init_vector()
 
     def _init_vector(self) -> BaseVector:
-        vector_type = dify_config.VECTOR_STORE
+        vector_type = can20_config.VECTOR_STORE
 
         if self._dataset.index_struct_dict:
             vector_type = self._dataset.index_struct_dict["type"]
         else:
-            if dify_config.VECTOR_STORE_WHITELIST_ENABLE:
+            if can20_config.VECTOR_STORE_WHITELIST_ENABLE:
                 whitelist = (
                     db.session.query(Whitelist)
                     .filter(Whitelist.tenant_id == self._dataset.tenant_id, Whitelist.category == "vector_db")

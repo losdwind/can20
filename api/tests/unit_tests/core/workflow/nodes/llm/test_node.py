@@ -3,7 +3,7 @@ from typing import Optional
 
 import pytest
 
-from configs import dify_config
+from configs import can20_config
 from core.app.entities.app_invoke_entities import InvokeFrom, ModelConfigWithCredentialsEntity
 from core.entities.provider_configuration import ProviderConfiguration, ProviderModelBundle
 from core.entities.provider_entities import CustomConfiguration, SystemConfiguration
@@ -251,8 +251,8 @@ def test_fetch_prompt_messages__vison_disabled(faker, llm_node, model_config):
 
 
 def test_fetch_prompt_messages__basic(faker, llm_node, model_config):
-    # Setup dify config
-    dify_config.MULTIMODAL_SEND_FORMAT = "url"
+    # Setup can20 config
+    can20_config.MULTIMODAL_SEND_FORMAT = "url"
 
     # Generate fake values for prompt template
     fake_assistant_prompt = faker.sentence()

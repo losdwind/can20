@@ -1,10 +1,10 @@
 import os
 import time
 
-from dify_app import DifyApp
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     os.environ["TZ"] = "UTC"
     # windows platform not support tzset
     if hasattr(time, "tzset"):

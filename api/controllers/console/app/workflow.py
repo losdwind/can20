@@ -6,7 +6,7 @@ from flask_restful import Resource, inputs, marshal_with, reqparse  # type: igno
 from werkzeug.exceptions import Forbidden, InternalServerError, NotFound
 
 import services
-from configs import dify_config
+from configs import can20_config
 from controllers.console import api
 from controllers.console.app.error import ConversationCompletedError, DraftWorkflowNotExist, DraftWorkflowNotSync
 from controllers.console.app.wraps import get_app_model
@@ -436,7 +436,7 @@ class WorkflowConfigApi(Resource):
     @get_app_model(mode=[AppMode.ADVANCED_CHAT, AppMode.WORKFLOW])
     def get(self, app_model: App):
         return {
-            "parallel_depth_limit": dify_config.WORKFLOW_PARALLEL_DEPTH_LIMIT,
+            "parallel_depth_limit": can20_config.WORKFLOW_PARALLEL_DEPTH_LIMIT,
         }
 
 

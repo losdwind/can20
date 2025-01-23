@@ -7,7 +7,7 @@ from flask import current_app, redirect, request
 from flask_restful import Resource  # type: ignore
 from werkzeug.exceptions import Unauthorized
 
-from configs import dify_config
+from configs import can20_config
 from constants.languages import languages
 from events.tenant_event import tenant_was_created
 from extensions.ext_database import db
@@ -25,21 +25,21 @@ from .. import api
 
 def get_oauth_providers():
     with current_app.app_context():
-        if not dify_config.GITHUB_CLIENT_ID or not dify_config.GITHUB_CLIENT_SECRET:
+        if not can20_config.GITHUB_CLIENT_ID or not can20_config.GITHUB_CLIENT_SECRET:
             github_oauth = None
         else:
             github_oauth = GitHubOAuth(
-                client_id=dify_config.GITHUB_CLIENT_ID,
-                client_secret=dify_config.GITHUB_CLIENT_SECRET,
-                redirect_uri=dify_config.CONSOLE_API_URL + "/console/api/oauth/authorize/github",
+                client_id=can20_config.GITHUB_CLIENT_ID,
+                client_secret=can20_config.GITHUB_CLIENT_SECRET,
+                redirect_uri=can20_config.CONSOLE_API_URL + "/console/api/oauth/authorize/github",
             )
-        if not dify_config.GOOGLE_CLIENT_ID or not dify_config.GOOGLE_CLIENT_SECRET:
+        if not can20_config.GOOGLE_CLIENT_ID or not can20_config.GOOGLE_CLIENT_SECRET:
             google_oauth = None
         else:
             google_oauth = GoogleOAuth(
-                client_id=dify_config.GOOGLE_CLIENT_ID,
-                client_secret=dify_config.GOOGLE_CLIENT_SECRET,
-                redirect_uri=dify_config.CONSOLE_API_URL + "/console/api/oauth/authorize/google",
+                client_id=can20_config.GOOGLE_CLIENT_ID,
+                client_secret=can20_config.GOOGLE_CLIENT_SECRET,
+                redirect_uri=can20_config.CONSOLE_API_URL + "/console/api/oauth/authorize/google",
             )
 
         OAUTH_PROVIDERS = {"github": github_oauth, "google": google_oauth}
@@ -86,25 +86,25 @@ class OAuthCallback(Resource):
             if invitation:
                 invitation_email = invitation.get("email", None)
                 if invitation_email != user_info.email:
-                    return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin?message=Invalid invitation token.")
+                    return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin?message=Invalid invitation token.")
 
-            return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin/invite-settings?invite_token={invite_token}")
+            return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin/invite-settings?invite_token={invite_token}")
 
         try:
             account = _generate_account(provider, user_info)
         except AccountNotFoundError:
-            return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin?message=Account not found.")
+            return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin?message=Account not found.")
         except (WorkSpaceNotFoundError, WorkSpaceNotAllowedCreateError):
             return redirect(
-                f"{dify_config.CONSOLE_WEB_URL}/signin"
+                f"{can20_config.CONSOLE_WEB_URL}/signin"
                 "?message=Workspace not found, please contact system admin to invite you to join in a workspace."
             )
         except AccountRegisterError as e:
-            return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin?message={e.description}")
+            return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin?message={e.description}")
 
         # Check account status
         if account.status == AccountStatus.BANNED.value:
-            return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin?message=Account is banned.")
+            return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin?message=Account is banned.")
 
         if account.status == AccountStatus.PENDING.value:
             account.status = AccountStatus.ACTIVE.value
@@ -114,10 +114,10 @@ class OAuthCallback(Resource):
         try:
             TenantService.create_owner_tenant_if_not_exist(account)
         except Unauthorized:
-            return redirect(f"{dify_config.CONSOLE_WEB_URL}/signin?message=Workspace not found.")
+            return redirect(f"{can20_config.CONSOLE_WEB_URL}/signin?message=Workspace not found.")
         except WorkSpaceNotAllowedCreateError:
             return redirect(
-                f"{dify_config.CONSOLE_WEB_URL}/signin"
+                f"{can20_config.CONSOLE_WEB_URL}/signin"
                 "?message=Workspace not found, please contact system admin to invite you to join in a workspace."
             )
 
@@ -127,7 +127,7 @@ class OAuthCallback(Resource):
         )
 
         return redirect(
-            f"{dify_config.CONSOLE_WEB_URL}?access_token={token_pair.access_token}&refresh_token={token_pair.refresh_token}"
+            f"{can20_config.CONSOLE_WEB_URL}?access_token={token_pair.access_token}&refresh_token={token_pair.refresh_token}"
         )
 
 
@@ -158,7 +158,7 @@ def _generate_account(provider: str, user_info: OAuthUserInfo):
     if not account:
         if not FeatureService.get_system_features().is_allow_register:
             raise AccountNotFoundError()
-        account_name = user_info.name or "Dify"
+        account_name = user_info.name or "CAN20"
         account = RegisterService.register(
             email=user_info.email, name=account_name, password=None, open_id=user_info.id, provider=provider
         )

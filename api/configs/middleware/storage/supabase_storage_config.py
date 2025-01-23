@@ -10,7 +10,7 @@ class SupabaseStorageConfig(BaseSettings):
     """
 
     SUPABASE_BUCKET_NAME: Optional[str] = Field(
-        description="Name of the Supabase bucket to store and retrieve objects (e.g., 'dify-bucket')",
+        description="Name of the Supabase bucket to store and retrieve objects (e.g., 'can20-bucket')",
         default=None,
     )
 

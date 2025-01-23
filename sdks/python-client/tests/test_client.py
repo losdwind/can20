@@ -2,16 +2,16 @@ import os
 import time
 import unittest
 
-from dify_client.client import (
+from can20_client.client import (
     ChatClient,
     CompletionClient,
-    DifyClient,
+    CAN20Client,
     KnowledgeBaseClient,
 )
 
 API_KEY = os.environ.get("API_KEY")
 APP_ID = os.environ.get("APP_ID")
-API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.dify.ai/v1")
+API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.can20.ai/v1")
 FILE_PATH_BASE = os.path.dirname(__file__)
 
 
@@ -245,18 +245,18 @@ class TestCompletionClient(unittest.TestCase):
         self.assertIn("answer", response.text)
 
 
-class TestDifyClient(unittest.TestCase):
+class TestCAN20Client(unittest.TestCase):
     def setUp(self):
-        self.dify_client = DifyClient(API_KEY)
+        self.can20_client = CAN20Client(API_KEY)
 
     def test_message_feedback(self):
-        response = self.dify_client.message_feedback(
+        response = self.can20_client.message_feedback(
             "your_message_id", "like", "test_user"
         )
         self.assertIn("success", response.text)
 
     def test_get_application_parameters(self):
-        response = self.dify_client.get_application_parameters("test_user")
+        response = self.can20_client.get_application_parameters("test_user")
         self.assertIn("user_input_form", response.text)
 
     def test_file_upload(self):
@@ -266,7 +266,7 @@ class TestDifyClient(unittest.TestCase):
 
         with open(file_path, "rb") as file:
             files = {"file": (file_name, file, mime_type)}
-            response = self.dify_client.file_upload("test_user", files)
+            response = self.can20_client.file_upload("test_user", files)
             self.assertIn("name", response.text)
 
 

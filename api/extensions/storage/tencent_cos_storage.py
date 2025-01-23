@@ -2,7 +2,7 @@ from collections.abc import Generator
 
 from qcloud_cos import CosConfig, CosS3Client  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from extensions.storage.base_storage import BaseStorage
 
 
@@ -12,12 +12,12 @@ class TencentCosStorage(BaseStorage):
     def __init__(self):
         super().__init__()
 
-        self.bucket_name = dify_config.TENCENT_COS_BUCKET_NAME
+        self.bucket_name = can20_config.TENCENT_COS_BUCKET_NAME
         config = CosConfig(
-            Region=dify_config.TENCENT_COS_REGION,
-            SecretId=dify_config.TENCENT_COS_SECRET_ID,
-            SecretKey=dify_config.TENCENT_COS_SECRET_KEY,
-            Scheme=dify_config.TENCENT_COS_SCHEME,
+            Region=can20_config.TENCENT_COS_REGION,
+            SecretId=can20_config.TENCENT_COS_SECRET_ID,
+            SecretKey=can20_config.TENCENT_COS_SECRET_KEY,
+            Scheme=can20_config.TENCENT_COS_SCHEME,
         )
         self.client = CosS3Client(config)
 

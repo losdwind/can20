@@ -2,7 +2,7 @@ from collections.abc import Mapping, Sequence
 from typing import Any, cast
 from uuid import uuid4
 
-from configs import dify_config
+from configs import can20_config
 from core.file import File
 from core.variables.exc import VariableError
 from core.variables.segments import (
@@ -107,8 +107,8 @@ def _build_variable_from_mapping(*, mapping: Mapping[str, Any], selector: Sequen
             result = ArrayObjectVariable.model_validate(mapping)
         case _:
             raise VariableError(f"not supported value type {value_type}")
-    if result.size > dify_config.MAX_VARIABLE_SIZE:
-        raise VariableError(f"variable size {result.size} exceeds limit {dify_config.MAX_VARIABLE_SIZE}")
+    if result.size > can20_config.MAX_VARIABLE_SIZE:
+        raise VariableError(f"variable size {result.size} exceeds limit {can20_config.MAX_VARIABLE_SIZE}")
     if not result.selector:
         result = result.model_copy(update={"selector": selector})
     return cast(Variable, result)

@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from configs import dify_config
+from configs import can20_config
 from core.model_manager import ModelInstance
 from core.rag.extractor.entity.extract_setting import ExtractSetting
 from core.rag.models.document import Document
@@ -58,7 +58,7 @@ class BaseIndexProcessor(ABC):
         """
         if processing_rule_mode in ["custom", "hierarchical"]:
             # The user-defined segmentation rule
-            max_segmentation_tokens_length = dify_config.INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH
+            max_segmentation_tokens_length = can20_config.INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH
             if max_tokens < 50 or max_tokens > max_segmentation_tokens_length:
                 raise ValueError(f"Custom segment length should be between 50 and {max_segmentation_tokens_length}.")
 

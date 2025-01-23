@@ -3,7 +3,7 @@ from collections.abc import Generator
 import boto3  # type: ignore
 from botocore.exceptions import ClientError  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from extensions.storage.base_storage import BaseStorage
 
 
@@ -13,13 +13,13 @@ class OracleOCIStorage(BaseStorage):
     def __init__(self):
         super().__init__()
 
-        self.bucket_name = dify_config.OCI_BUCKET_NAME
+        self.bucket_name = can20_config.OCI_BUCKET_NAME
         self.client = boto3.client(
             "s3",
-            aws_secret_access_key=dify_config.OCI_SECRET_KEY,
-            aws_access_key_id=dify_config.OCI_ACCESS_KEY,
-            endpoint_url=dify_config.OCI_ENDPOINT,
-            region_name=dify_config.OCI_REGION,
+            aws_secret_access_key=can20_config.OCI_SECRET_KEY,
+            aws_access_key_id=can20_config.OCI_ACCESS_KEY,
+            endpoint_url=can20_config.OCI_ENDPOINT,
+            region_name=can20_config.OCI_REGION,
         )
 
     def save(self, filename, data):

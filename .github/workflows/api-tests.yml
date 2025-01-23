@@ -50,7 +50,7 @@ jobs:
       - name: Run ModelRuntime
         run: poetry run -P api bash dev/pytest/pytest_model_runtime.sh
 
-      - name: Run dify config tests
+      - name: Run can20 config tests
         run: poetry run -P api python dev/pytest/pytest_config_tests.py
 
       - name: Run Tool

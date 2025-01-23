@@ -13,7 +13,7 @@ from xml.etree import ElementTree
 import requests
 from docx import Document as DocxDocument
 
-from configs import dify_config
+from configs import can20_config
 from core.helper import ssrf_proxy
 from core.rag.extractor.extractor_base import BaseExtractor
 from core.rag.models.document import Document
@@ -110,7 +110,7 @@ class WordExtractor(BaseExtractor):
                 # save file to db
                 upload_file = UploadFile(
                     tenant_id=self.tenant_id,
-                    storage_type=dify_config.STORAGE_TYPE,
+                    storage_type=can20_config.STORAGE_TYPE,
                     key=file_key,
                     name=file_key,
                     size=0,
@@ -127,7 +127,7 @@ class WordExtractor(BaseExtractor):
                 db.session.add(upload_file)
                 db.session.commit()
                 image_map[rel.target_part] = (
-                    f"![image]({dify_config.CONSOLE_API_URL}/files/{upload_file.id}/file-preview)"
+                    f"![image]({can20_config.CONSOLE_API_URL}/files/{upload_file.id}/file-preview)"
                 )
 
         return image_map

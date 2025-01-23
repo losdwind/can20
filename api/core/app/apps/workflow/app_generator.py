@@ -9,7 +9,7 @@ from flask import Flask, current_app
 from pydantic import ValidationError
 
 import contexts
-from configs import dify_config
+from configs import can20_config
 from core.app.app_config.features.file_upload.manager import FileUploadConfigManager
 from core.app.apps.base_app_generator import BaseAppGenerator
 from core.app.apps.base_app_queue_manager import AppQueueManager, GenerateTaskStoppedError, PublishFrom
@@ -272,7 +272,7 @@ class WorkflowAppGenerator(BaseAppGenerator):
                 logger.exception("Validation Error when generating")
                 queue_manager.publish_error(e, PublishFrom.APPLICATION_MANAGER)
             except ValueError as e:
-                if dify_config.DEBUG:
+                if can20_config.DEBUG:
                     logger.exception("Error when generating")
                 queue_manager.publish_error(e, PublishFrom.APPLICATION_MANAGER)
             except Exception as e:

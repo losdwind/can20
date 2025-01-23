@@ -2,15 +2,15 @@
 
 ## Java
 
-https://github.com/langgenius/java-client/
+https://github.com/chainainexus/java-client/
 
 ## Go
 
-https://github.com/langgenius/dify-sdk-go
+https://github.com/chainainexus/can20-sdk-go
 
 ## Ruby
 
-https://github.com/langgenius/ruby-sdk
+https://github.com/chainainexus/ruby-sdk
 
 ## Python
 

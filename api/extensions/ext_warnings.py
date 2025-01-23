@@ -1,7 +1,7 @@
-from dify_app import DifyApp
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     import warnings
 
     warnings.simplefilter("ignore", ResourceWarning)

@@ -5,7 +5,7 @@ import requests
 from flask_restful import Resource, reqparse  # type: ignore
 from packaging import version
 
-from configs import dify_config
+from configs import can20_config
 
 from . import api
 
@@ -15,16 +15,16 @@ class VersionApi(Resource):
         parser = reqparse.RequestParser()
         parser.add_argument("current_version", type=str, required=True, location="args")
         args = parser.parse_args()
-        check_update_url = dify_config.CHECK_UPDATE_URL
+        check_update_url = can20_config.CHECK_UPDATE_URL
 
         result = {
-            "version": dify_config.CURRENT_VERSION,
+            "version": can20_config.CURRENT_VERSION,
             "release_date": "",
             "release_notes": "",
             "can_auto_update": False,
             "features": {
-                "can_replace_logo": dify_config.CAN_REPLACE_LOGO,
-                "model_load_balancing_enabled": dify_config.MODEL_LB_ENABLED,
+                "can_replace_logo": can20_config.CAN_REPLACE_LOGO,
+                "model_load_balancing_enabled": can20_config.MODEL_LB_ENABLED,
             },
         }
 

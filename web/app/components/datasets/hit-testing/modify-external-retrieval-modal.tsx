@@ -7,7 +7,7 @@ import RetrievalSettings from '../external-knowledge-base/create/RetrievalSettin
 import Button from '@/app/components/base/button'
 import ActionButton from '@/app/components/base/action-button'
 
-type ModifyExternalRetrievalModalProps = {
+type modifyExternalRetrievalModalProps = {
   onClose: () => void
   onSave: (data: { top_k: number; score_threshold: number; score_threshold_enabled: boolean }) => void
   initialTopK: number
@@ -15,7 +15,7 @@ type ModifyExternalRetrievalModalProps = {
   initialScoreThresholdEnabled: boolean
 }
 
-const ModifyExternalRetrievalModal: React.FC<ModifyExternalRetrievalModalProps> = ({
+const modifyExternalRetrievalModal: React.FC<modifyExternalRetrievalModalProps> = ({
   onClose,
   onSave,
   initialTopK,
@@ -68,4 +68,4 @@ const ModifyExternalRetrievalModal: React.FC<ModifyExternalRetrievalModalProps> 
   )
 }
 
-export default ModifyExternalRetrievalModal
+export default modifyExternalRetrievalModal

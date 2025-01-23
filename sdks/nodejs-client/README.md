@@ -1,16 +1,16 @@
-# Dify Node.js SDK
-This is the Node.js SDK for the Dify API, which allows you to easily integrate Dify into your Node.js applications.
+# CAN20 Node.js SDK
+This is the Node.js SDK for the CAN20 API, which allows you to easily integrate CAN20 into your Node.js applications.
 
 ## Install
 ```bash
-npm install dify-client
+npm install can20-client
 ```
 
 ## Usage
 After installing the SDK, you can use it in your project like this:
 
 ```js
-import { DifyClient, ChatClient, CompletionClient } from 'dify-client'
+import { CAN20Client, ChatClient, CompletionClient } from 'can20-client'
 
 const API_KEY = 'your-api-key-here'
 const user = `random-user-id`
@@ -49,7 +49,7 @@ chatClient.getConversationMessages(conversationId, user)
 chatClient.renameConversation(conversationId, name, user)
 
 
-const client = new DifyClient(API_KEY)
+const client = new CAN20Client(API_KEY)
 // Fetch application parameters
 client.getApplicationParameters(user)
 // Provide feedback for a message
@@ -57,7 +57,7 @@ client.messageFeedback(messageId, rating, user)
 
 ```
 
-Replace 'your-api-key-here' with your actual Dify API key.Replace 'your-app-id-here' with your actual Dify APP ID.
+Replace 'your-api-key-here' with your actual CAN20 API key.Replace 'your-app-id-here' with your actual CAN20 APP ID.
 
 ## License
 This SDK is released under the MIT License.

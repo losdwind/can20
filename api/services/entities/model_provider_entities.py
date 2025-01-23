@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict
 
-from configs import dify_config
+from configs import can20_config
 from core.entities.model_entities import (
     ModelWithProviderEntity,
     ProviderModelWithStatusEntity,
@@ -74,7 +74,7 @@ class ProviderResponse(BaseModel):
     def __init__(self, **data) -> None:
         super().__init__(**data)
 
-        url_prefix = dify_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
+        url_prefix = can20_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
         if self.icon_small is not None:
             self.icon_small = I18nObject(
                 en_US=f"{url_prefix}/icon_small/en_US", zh_Hans=f"{url_prefix}/icon_small/zh_Hans"
@@ -101,7 +101,7 @@ class ProviderWithModelsResponse(BaseModel):
     def __init__(self, **data) -> None:
         super().__init__(**data)
 
-        url_prefix = dify_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
+        url_prefix = can20_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
         if self.icon_small is not None:
             self.icon_small = I18nObject(
                 en_US=f"{url_prefix}/icon_small/en_US", zh_Hans=f"{url_prefix}/icon_small/zh_Hans"
@@ -121,7 +121,7 @@ class SimpleProviderEntityResponse(SimpleProviderEntity):
     def __init__(self, **data) -> None:
         super().__init__(**data)
 
-        url_prefix = dify_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
+        url_prefix = can20_config.CONSOLE_API_URL + f"/console/api/workspaces/current/model-providers/{self.provider}"
         if self.icon_small is not None:
             self.icon_small = I18nObject(
                 en_US=f"{url_prefix}/icon_small/en_US", zh_Hans=f"{url_prefix}/icon_small/zh_Hans"

@@ -7,7 +7,7 @@ from urllib.parse import urlencode, urlparse
 
 import httpx
 
-from configs import dify_config
+from configs import can20_config
 from core.file import file_manager
 from core.helper import ssrf_proxy
 from core.workflow.entities.variable_pool import VariablePool
@@ -72,7 +72,7 @@ class Executor:
         node_data: HttpRequestNodeData,
         timeout: HttpRequestNodeTimeout,
         variable_pool: VariablePool,
-        max_retries: int = dify_config.SSRF_DEFAULT_MAX_RETRIES,
+        max_retries: int = can20_config.SSRF_DEFAULT_MAX_RETRIES,
     ):
         # If authorization API key is present, convert the API key using the variable pool
         if node_data.authorization.type == "api-key":
@@ -247,9 +247,9 @@ class Executor:
         executor_response = Response(response)
 
         threshold_size = (
-            dify_config.HTTP_REQUEST_NODE_MAX_BINARY_SIZE
+            can20_config.HTTP_REQUEST_NODE_MAX_BINARY_SIZE
             if executor_response.is_file
-            else dify_config.HTTP_REQUEST_NODE_MAX_TEXT_SIZE
+            else can20_config.HTTP_REQUEST_NODE_MAX_TEXT_SIZE
         )
         if executor_response.size > threshold_size:
             raise ResponseSizeError(

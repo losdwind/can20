@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy import func
 from werkzeug.exceptions import Unauthorized
 
-from configs import dify_config
+from configs import can20_config
 from constants.languages import language_timezone_mapping, languages
 from events.tenant_event import tenant_was_created
 from extensions.ext_database import db
@@ -31,7 +31,7 @@ from models.account import (
     TenantAccountRole,
     TenantStatus,
 )
-from models.model import DifySetup
+from models.model import CAN20Setup
 from services.billing_service import BillingService
 from services.errors.account import (
     AccountAlreadyInTenantError,
@@ -65,7 +65,7 @@ class TokenPair(BaseModel):
 
 REFRESH_TOKEN_PREFIX = "refresh_token:"
 ACCOUNT_REFRESH_TOKEN_PREFIX = "account_refresh_token:"
-REFRESH_TOKEN_EXPIRY = timedelta(days=dify_config.REFRESH_TOKEN_EXPIRE_DAYS)
+REFRESH_TOKEN_EXPIRY = timedelta(days=can20_config.REFRESH_TOKEN_EXPIRE_DAYS)
 
 
 class AccountService:
@@ -129,12 +129,12 @@ class AccountService:
 
     @staticmethod
     def get_account_jwt_token(account: Account) -> str:
-        exp_dt = datetime.now(UTC) + timedelta(minutes=dify_config.ACCESS_TOKEN_EXPIRE_MINUTES)
+        exp_dt = datetime.now(UTC) + timedelta(minutes=can20_config.ACCESS_TOKEN_EXPIRE_MINUTES)
         exp = int(exp_dt.timestamp())
         payload = {
             "user_id": account.id,
             "exp": exp,
-            "iss": dify_config.EDITION,
+            "iss": can20_config.EDITION,
             "sub": "Console API Passport",
         }
 
@@ -208,7 +208,7 @@ class AccountService:
 
             raise AccountNotFound()
 
-        if dify_config.BILLING_ENABLED and BillingService.is_email_in_freeze(email):
+        if can20_config.BILLING_ENABLED and BillingService.is_email_in_freeze(email):
             raise AccountRegisterError(
                 description=(
                     "This email account has been deleted within the past "
@@ -460,7 +460,7 @@ class AccountService:
 
     @classmethod
     def get_user_through_email(cls, email: str):
-        if dify_config.BILLING_ENABLED and BillingService.is_email_in_freeze(email):
+        if can20_config.BILLING_ENABLED and BillingService.is_email_in_freeze(email):
             raise AccountRegisterError(
                 description=(
                     "This email account has been deleted within the past "
@@ -484,7 +484,7 @@ class AccountService:
         if count is None:
             count = 0
         count = int(count) + 1
-        redis_client.setex(key, dify_config.LOGIN_LOCKOUT_DURATION, count)
+        redis_client.setex(key, can20_config.LOGIN_LOCKOUT_DURATION, count)
 
     @staticmethod
     def is_login_error_rate_limit(email: str) -> bool:
@@ -520,7 +520,7 @@ class AccountService:
         current_minute_count = int(current_minute_count)
 
         # check current hour count
-        if current_minute_count > dify_config.EMAIL_SEND_IP_LIMIT_PER_MINUTE:
+        if current_minute_count > can20_config.EMAIL_SEND_IP_LIMIT_PER_MINUTE:
             hour_limit_count = redis_client.get(hour_limit_key)
             if hour_limit_count is None:
                 hour_limit_count = 0
@@ -811,7 +811,7 @@ class RegisterService:
     @classmethod
     def setup(cls, email: str, name: str, password: str, ip_address: str) -> None:
         """
-        Setup dify
+        Setup can20
 
         :param email: email
         :param name: username
@@ -833,11 +833,11 @@ class RegisterService:
 
             TenantService.create_owner_tenant_if_not_exist(account=account, is_setup=True)
 
-            dify_setup = DifySetup(version=dify_config.CURRENT_VERSION)
-            db.session.add(dify_setup)
+            can20_setup = CAN20Setup(version=can20_config.CURRENT_VERSION)
+            db.session.add(can20_setup)
             db.session.commit()
         except Exception as e:
-            db.session.query(DifySetup).delete()
+            db.session.query(CAN20Setup).delete()
             db.session.query(TenantAccountJoin).delete()
             db.session.query(Account).delete()
             db.session.query(Tenant).delete()
@@ -931,7 +931,7 @@ class RegisterService:
             language=account.interface_language,
             to=email,
             token=token,
-            inviter_name=inviter.name if inviter else "Dify",
+            inviter_name=inviter.name if inviter else "CAN20",
             workspace_name=tenant.name,
         )
 
@@ -945,7 +945,7 @@ class RegisterService:
             "email": account.email,
             "workspace_id": tenant.id,
         }
-        expiry_hours = dify_config.INVITE_EXPIRY_HOURS
+        expiry_hours = can20_config.INVITE_EXPIRY_HOURS
         redis_client.setex(cls._get_invitation_token_key(token), expiry_hours * 60 * 60, json.dumps(invitation_data))
         return token
 

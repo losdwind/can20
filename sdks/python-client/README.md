@@ -1,13 +1,13 @@
-# dify-client
+# can20-client
 
-A Dify App Service-API Client, using for build a webapp by request Service-API
+A CAN20 App Service-API Client, using for build a webapp by request Service-API
 
 ## Usage
 
-First, install `dify-client` python sdk package:
+First, install `can20-client` python sdk package:
 
 ```
-pip install dify-client
+pip install can20-client
 ```
 
 Write your code with sdk:
@@ -15,7 +15,7 @@ Write your code with sdk:
 - completion generate with `blocking` response_mode
 
 ```python
-from dify_client import CompletionClient
+from can20_client import CompletionClient
 
 api_key = "your_api_key"
 
@@ -35,7 +35,7 @@ print(result.get('answer'))
 - completion using vision model, like gpt-4-vision
 
 ```python
-from dify_client import CompletionClient
+from can20_client import CompletionClient
 
 api_key = "your_api_key"
 
@@ -68,7 +68,7 @@ print(result.get('answer'))
 
 ```python
 import json
-from dify_client import ChatClient
+from can20_client import ChatClient
 
 api_key = "your_api_key"
 
@@ -89,7 +89,7 @@ for line in chat_response.iter_lines(decode_unicode=True):
 - chat using vision model, like gpt-4-vision
 
 ```python
-from dify_client import ChatClient
+from can20_client import ChatClient
 
 api_key = "your_api_key"
 
@@ -121,12 +121,12 @@ print(result.get("answer"))
 - upload file when using vision model
 
 ```python
-from dify_client import DifyClient
+from can20_client import CAN20Client
 
 api_key = "your_api_key"
 
 # Initialize Client
-dify_client = DifyClient(api_key)
+can20_client = CAN20Client(api_key)
 
 file_path = "your_image_file_path"
 file_name = "panda.jpeg"
@@ -136,7 +136,7 @@ with open(file_path, "rb") as file:
     files = {
         "file": (file_name, file, mime_type)
     }
-    response = dify_client.file_upload("user_id", files)
+    response = can20_client.file_upload("user_id", files)
 
     result = response.json()
     print(f'upload_file_id: {result.get("id")}')
@@ -147,7 +147,7 @@ with open(file_path, "rb") as file:
 - Others
 
 ```python
-from dify_client import ChatClient
+from can20_client import ChatClient
 
 api_key = "your_api_key"
 

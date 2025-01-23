@@ -15,7 +15,7 @@ class MyScaleVectorTest(AbstractVectorTest):
                 port=8123,
                 user="default",
                 password="",
-                database="dify",
+                database="can20",
                 fts_params="",
             ),
         )

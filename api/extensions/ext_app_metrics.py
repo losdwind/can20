@@ -4,22 +4,22 @@ import threading
 
 from flask import Response
 
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     @app.after_request
     def after_request(response):
         """Add Version headers to the response."""
-        response.headers.add("X-Version", dify_config.CURRENT_VERSION)
-        response.headers.add("X-Env", dify_config.DEPLOY_ENV)
+        response.headers.add("X-Version", can20_config.CURRENT_VERSION)
+        response.headers.add("X-Env", can20_config.DEPLOY_ENV)
         return response
 
     @app.route("/health")
     def health():
         return Response(
-            json.dumps({"pid": os.getpid(), "status": "ok", "version": dify_config.CURRENT_VERSION}),
+            json.dumps({"pid": os.getpid(), "status": "ok", "version": can20_config.CURRENT_VERSION}),
             status=200,
             content_type="application/json",
         )

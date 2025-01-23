@@ -4,14 +4,14 @@ require 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
 
-class DifyClient {
+class CAN20Client {
     protected $api_key;
     protected $base_url;
     protected $client;
 
     public function __construct($api_key, $base_url = null) {
         $this->api_key = $api_key;
-        $this->base_url = $base_url ?? "https://api.dify.ai/v1/";
+        $this->base_url = $base_url ?? "https://api.can20.ai/v1/";
         $this->client = new Client([
             'base_uri' => $this->base_url,
             'headers' => [
@@ -101,7 +101,7 @@ class DifyClient {
     }
 }
 
-class CompletionClient extends DifyClient {
+class CompletionClient extends CAN20Client {
     public function create_completion_message($inputs, $response_mode, $user, $files = null) {
         $data = [
             'inputs' => $inputs,
@@ -113,7 +113,7 @@ class CompletionClient extends DifyClient {
     }
 }
 
-class ChatClient extends DifyClient {
+class ChatClient extends CAN20Client {
     public function create_chat_message($inputs, $query, $user, $response_mode = 'blocking', $conversation_id = null, $files = null) {
         $data = [
             'inputs' => $inputs,
@@ -196,7 +196,7 @@ class ChatClient extends DifyClient {
 
 }
 
-class WorkflowClient extends DifyClient{
+class WorkflowClient extends CAN20Client{
     public function run($inputs, $response_mode, $user) {
         $data = [
             'inputs' => $inputs,

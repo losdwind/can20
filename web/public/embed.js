@@ -1,6 +1,6 @@
 /** this file is used to embed the chatbot in a website
- * the difyChatbotConfig should be defined in the html file before this script is included
- * the difyChatbotConfig should contain the token of the chatbot
+ * the can20ChatbotConfig should be defined in the html file before this script is included
+ * the can20ChatbotConfig should contain the token of the chatbot
  * the token can be found in the chatbot settings page
  */
 
@@ -8,9 +8,9 @@
 
 (function () {
   // Constants for DOM element IDs and configuration key
-  const configKey = "difyChatbotConfig";
-  const buttonId = "dify-chatbot-bubble-button";
-  const iframeId = "dify-chatbot-bubble-window";
+  const configKey = "can20ChatbotConfig";
+  const buttonId = "can20-chatbot-bubble-button";
+  const iframeId = "can20-chatbot-bubble-window";
   const config = window[configKey];
 
   // SVG icons for open and close states
@@ -53,7 +53,7 @@
     const params = new URLSearchParams(await getCompressedInputsFromConfig());
 
     const baseUrl =
-      config.baseUrl || `https://${config.isDev ? "dev." : ""}udify.app`;
+      config.baseUrl || `https://${config.isDev ? "dev." : ""}ucan20.app`;
 
     // pre-check the length of the URL
     const iframeUrl = `${baseUrl}/chatbot/${config.token}?${params}`;
@@ -65,7 +65,7 @@
     function createIframe() {
       const iframe = document.createElement("iframe");
       iframe.allow = "fullscreen;microphone";
-      iframe.title = "dify chatbot bubble window";
+      iframe.title = "can20 chatbot bubble window";
       iframe.id = iframeId;
       iframe.src = iframeUrl;
       iframe.style.cssText = `

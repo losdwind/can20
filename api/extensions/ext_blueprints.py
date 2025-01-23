@@ -1,8 +1,8 @@
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     # register blueprint routers
 
     from flask_cors import CORS  # type: ignore
@@ -22,7 +22,7 @@ def init_app(app: DifyApp):
 
     CORS(
         web_bp,
-        resources={r"/*": {"origins": dify_config.WEB_API_CORS_ALLOW_ORIGINS}},
+        resources={r"/*": {"origins": can20_config.WEB_API_CORS_ALLOW_ORIGINS}},
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization", "X-App-Code"],
         methods=["GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"],
@@ -33,7 +33,7 @@ def init_app(app: DifyApp):
 
     CORS(
         console_app_bp,
-        resources={r"/*": {"origins": dify_config.CONSOLE_CORS_ALLOW_ORIGINS}},
+        resources={r"/*": {"origins": can20_config.CONSOLE_CORS_ALLOW_ORIGINS}},
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization"],
         methods=["GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"],

@@ -5,9 +5,9 @@ from functools import wraps
 from flask import abort, request
 from flask_login import current_user  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from controllers.console.workspace.error import AccountNotInitializedError
-from models.model import DifySetup
+from models.model import CAN20Setup
 from services.feature_service import FeatureService, LicenseStatus
 from services.operation_service import OperationService
 
@@ -31,7 +31,7 @@ def account_initialization_required(view):
 def only_edition_cloud(view):
     @wraps(view)
     def decorated(*args, **kwargs):
-        if dify_config.EDITION != "CLOUD":
+        if can20_config.EDITION != "CLOUD":
             abort(404)
 
         return view(*args, **kwargs)
@@ -42,7 +42,7 @@ def only_edition_cloud(view):
 def only_edition_self_hosted(view):
     @wraps(view)
     def decorated(*args, **kwargs):
-        if dify_config.EDITION != "SELF_HOSTED":
+        if can20_config.EDITION != "SELF_HOSTED":
             abort(404)
 
         return view(*args, **kwargs)
@@ -99,7 +99,7 @@ def cloud_edition_billing_knowledge_limit_check(resource: str):
                     if features.billing.subscription.plan == "sandbox":
                         abort(
                             403,
-                            "To unlock this feature and elevate your Dify experience, please upgrade to a paid plan.",
+                            "To unlock this feature and elevate your CAN20 experience, please upgrade to a paid plan.",
                         )
                 else:
                     return view(*args, **kwargs)
@@ -134,9 +134,9 @@ def setup_required(view):
     @wraps(view)
     def decorated(*args, **kwargs):
         # check setup
-        if dify_config.EDITION == "SELF_HOSTED" and os.environ.get("INIT_PASSWORD") and not DifySetup.query.first():
+        if can20_config.EDITION == "SELF_HOSTED" and os.environ.get("INIT_PASSWORD") and not CAN20Setup.query.first():
             raise NotInitValidateError()
-        elif dify_config.EDITION == "SELF_HOSTED" and not DifySetup.query.first():
+        elif can20_config.EDITION == "SELF_HOSTED" and not CAN20Setup.query.first():
             raise NotSetupError()
 
         return view(*args, **kwargs)

@@ -4,7 +4,7 @@ from flask_login import current_user  # type: ignore
 from flask_restful import Resource, abort, marshal_with, reqparse  # type: ignore
 
 import services
-from configs import dify_config
+from configs import can20_config
 from controllers.console import api
 from controllers.console.wraps import (
     account_initialization_required,
@@ -53,7 +53,7 @@ class MemberInviteEmailApi(Resource):
 
         inviter = current_user
         invitation_results = []
-        console_web_url = dify_config.CONSOLE_WEB_URL
+        console_web_url = can20_config.CONSOLE_WEB_URL
         for invitee_email in invitee_emails:
             try:
                 token = RegisterService.invite_new_member(

@@ -6,7 +6,7 @@ from flask_restful import Resource, marshal_with  # type: ignore
 from werkzeug.exceptions import Forbidden
 
 import services
-from configs import dify_config
+from configs import can20_config
 from constants import DOCUMENT_EXTENSIONS
 from controllers.common.errors import FilenameNotExistsError
 from controllers.console.wraps import (
@@ -35,12 +35,12 @@ class FileApi(Resource):
     @marshal_with(upload_config_fields)
     def get(self):
         return {
-            "file_size_limit": dify_config.UPLOAD_FILE_SIZE_LIMIT,
-            "batch_count_limit": dify_config.UPLOAD_FILE_BATCH_LIMIT,
-            "image_file_size_limit": dify_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT,
-            "video_file_size_limit": dify_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT,
-            "audio_file_size_limit": dify_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT,
-            "workflow_file_upload_limit": dify_config.WORKFLOW_FILE_UPLOAD_LIMIT,
+            "file_size_limit": can20_config.UPLOAD_FILE_SIZE_LIMIT,
+            "batch_count_limit": can20_config.UPLOAD_FILE_BATCH_LIMIT,
+            "image_file_size_limit": can20_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT,
+            "video_file_size_limit": can20_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT,
+            "audio_file_size_limit": can20_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT,
+            "workflow_file_upload_limit": can20_config.WORKFLOW_FILE_UPLOAD_LIMIT,
         }, 200
 
     @setup_required

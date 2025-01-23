@@ -8,7 +8,7 @@ import click
 from flask import current_app
 from werkzeug.exceptions import NotFound
 
-from configs import dify_config
+from configs import can20_config
 from constants.languages import languages
 from core.rag.datasource.vdb.vector_factory import Vector
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -113,7 +113,7 @@ def reset_encrypt_key_pair():
     After the reset, all LLM credentials will become invalid, requiring re-entry.
     Only support SELF_HOSTED mode.
     """
-    if dify_config.EDITION != "SELF_HOSTED":
+    if can20_config.EDITION != "SELF_HOSTED":
         click.echo(click.style("This command is only for SELF_HOSTED installations.", fg="red"))
         return
 
@@ -257,7 +257,7 @@ def migrate_knowledge_vector_database():
     create_count = 0
     skipped_count = 0
     total_count = 0
-    vector_type = dify_config.VECTOR_STORE
+    vector_type = can20_config.VECTOR_STORE
     upper_collection_vector_types = {
         VectorType.MILVUS,
         VectorType.PGVECTOR,
@@ -478,7 +478,7 @@ def convert_to_agent_apps():
 @click.option("--field", default="metadata.doc_id", prompt=False, help="Index field , default is metadata.doc_id.")
 def add_qdrant_doc_id_index(field: str):
     click.echo(click.style("Starting Qdrant doc_id index creation.", fg="green"))
-    vector_type = dify_config.VECTOR_STORE
+    vector_type = can20_config.VECTOR_STORE
     if vector_type != "qdrant":
         click.echo(click.style("This command only supports Qdrant vector store.", fg="red"))
         return
@@ -496,15 +496,15 @@ def add_qdrant_doc_id_index(field: str):
         from core.rag.datasource.vdb.qdrant.qdrant_vector import QdrantConfig
 
         for binding in bindings:
-            if dify_config.QDRANT_URL is None:
+            if can20_config.QDRANT_URL is None:
                 raise ValueError("Qdrant URL is required.")
             qdrant_config = QdrantConfig(
-                endpoint=dify_config.QDRANT_URL,
-                api_key=dify_config.QDRANT_API_KEY,
+                endpoint=can20_config.QDRANT_URL,
+                api_key=can20_config.QDRANT_API_KEY,
                 root_path=current_app.root_path,
-                timeout=dify_config.QDRANT_CLIENT_TIMEOUT,
-                grpc_port=dify_config.QDRANT_GRPC_PORT,
-                prefer_grpc=dify_config.QDRANT_GRPC_ENABLED,
+                timeout=can20_config.QDRANT_CLIENT_TIMEOUT,
+                grpc_port=can20_config.QDRANT_GRPC_PORT,
+                prefer_grpc=can20_config.QDRANT_GRPC_ENABLED,
             )
             try:
                 client = qdrant_client.QdrantClient(**qdrant_config.to_qdrant_params())

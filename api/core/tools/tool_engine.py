@@ -8,8 +8,8 @@ from typing import Any, Optional, Union, cast
 from yarl import URL
 
 from core.app.entities.app_invoke_entities import InvokeFrom
-from core.callback_handler.agent_tool_callback_handler import DifyAgentCallbackHandler
-from core.callback_handler.workflow_tool_callback_handler import DifyWorkflowCallbackHandler
+from core.callback_handler.agent_tool_callback_handler import CAN20AgentCallbackHandler
+from core.callback_handler.workflow_tool_callback_handler import CAN20WorkflowCallbackHandler
 from core.file import FileType
 from core.file.models import FileTransferMethod
 from core.ops.ops_trace_manager import TraceQueueManager
@@ -44,7 +44,7 @@ class ToolEngine:
         tenant_id: str,
         message: Message,
         invoke_from: InvokeFrom,
-        agent_tool_callback: DifyAgentCallbackHandler,
+        agent_tool_callback: CAN20AgentCallbackHandler,
         trace_manager: Optional[TraceQueueManager] = None,
     ) -> tuple[str, list[tuple[MessageFile, str]], ToolInvokeMeta]:
         """
@@ -128,7 +128,7 @@ class ToolEngine:
         tool: Tool,
         tool_parameters: Mapping[str, Any],
         user_id: str,
-        workflow_tool_callback: DifyWorkflowCallbackHandler,
+        workflow_tool_callback: CAN20WorkflowCallbackHandler,
         workflow_call_depth: int,
         thread_pool_id: Optional[str] = None,
     ) -> list[ToolInvokeMessage]:

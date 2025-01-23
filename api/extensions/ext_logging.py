@@ -6,38 +6,38 @@ from logging.handlers import RotatingFileHandler
 
 import flask
 
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     log_handlers: list[logging.Handler] = []
-    log_file = dify_config.LOG_FILE
+    log_file = can20_config.LOG_FILE
     if log_file:
         log_dir = os.path.dirname(log_file)
         os.makedirs(log_dir, exist_ok=True)
         log_handlers.append(
             RotatingFileHandler(
                 filename=log_file,
-                maxBytes=dify_config.LOG_FILE_MAX_SIZE * 1024 * 1024,
-                backupCount=dify_config.LOG_FILE_BACKUP_COUNT,
+                maxBytes=can20_config.LOG_FILE_MAX_SIZE * 1024 * 1024,
+                backupCount=can20_config.LOG_FILE_BACKUP_COUNT,
             )
         )
 
     # Always add StreamHandler to log to console
     sh = logging.StreamHandler(sys.stdout)
     sh.addFilter(RequestIdFilter())
-    log_formatter = logging.Formatter(fmt=dify_config.LOG_FORMAT)
+    log_formatter = logging.Formatter(fmt=can20_config.LOG_FORMAT)
     sh.setFormatter(log_formatter)
     log_handlers.append(sh)
 
     logging.basicConfig(
-        level=dify_config.LOG_LEVEL,
-        datefmt=dify_config.LOG_DATEFORMAT,
+        level=can20_config.LOG_LEVEL,
+        datefmt=can20_config.LOG_DATEFORMAT,
         handlers=log_handlers,
         force=True,
     )
-    log_tz = dify_config.LOG_TZ
+    log_tz = can20_config.LOG_TZ
     if log_tz:
         from datetime import datetime
 

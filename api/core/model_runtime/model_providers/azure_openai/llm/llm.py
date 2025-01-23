@@ -484,7 +484,7 @@ class AzureOpenAILargeLanguageModel(_CommonAzureOpenAI, LargeLanguageModel):
                 continue
 
             delta = chunk.choices[0]
-            # NOTE: For fix https://github.com/langgenius/dify/issues/5790
+            # NOTE: For fix https://github.com/chainainexus/can20/issues/5790
             if delta.delta is None:
                 continue
 

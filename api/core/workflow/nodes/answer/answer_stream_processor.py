@@ -213,7 +213,7 @@ class AnswerStreamProcessor(StreamProcessor):
             return None
 
         if isinstance(value, dict):
-            if "dify_model_identity" in value and value["dify_model_identity"] == FILE_MODEL_IDENTITY:
+            if "can20_model_identity" in value and value["can20_model_identity"] == FILE_MODEL_IDENTITY:
                 return value
         elif isinstance(value, File):
             return value.to_dict()

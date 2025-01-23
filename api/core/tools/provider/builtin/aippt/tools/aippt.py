@@ -440,7 +440,7 @@ class AIPPTGenerateToolAdapter:
         headers = {
             "x-channel": "",
             "x-api-key": self._tool.runtime.credentials["aippt_access_key"],
-            "x-token": self._get_api_token(credentials=self._tool.runtime.credentials, user_id="__dify_system__"),
+            "x-token": self._get_api_token(credentials=self._tool.runtime.credentials, user_id="__can20_system__"),
         }
         response = get(
             str(self._api_base_url / "template_component" / "suit" / "search"),
@@ -468,7 +468,7 @@ class AIPPTGenerateToolAdapter:
         Override this method to add runtime parameters to the tool.
         """
         try:
-            colors, styles = self.get_styles(user_id="__dify_system__")
+            colors, styles = self.get_styles(user_id="__can20_system__")
         except Exception as e:
             colors, styles = (
                 [{"id": "-1", "name": "__default__", "en_name": "__default__"}],

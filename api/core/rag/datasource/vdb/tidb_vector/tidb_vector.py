@@ -8,7 +8,7 @@ from sqlalchemy import JSON, TEXT, Column, DateTime, String, Table, create_engin
 from sqlalchemy import text as sql_text
 from sqlalchemy.orm import Session, declarative_base
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -241,11 +241,11 @@ class TiDBVectorFactory(AbstractVectorFactory):
         return TiDBVector(
             collection_name=collection_name,
             config=TiDBVectorConfig(
-                host=dify_config.TIDB_VECTOR_HOST or "",
-                port=dify_config.TIDB_VECTOR_PORT or 0,
-                user=dify_config.TIDB_VECTOR_USER or "",
-                password=dify_config.TIDB_VECTOR_PASSWORD or "",
-                database=dify_config.TIDB_VECTOR_DATABASE or "",
-                program_name=dify_config.APPLICATION_NAME,
+                host=can20_config.TIDB_VECTOR_HOST or "",
+                port=can20_config.TIDB_VECTOR_PORT or 0,
+                user=can20_config.TIDB_VECTOR_USER or "",
+                password=can20_config.TIDB_VECTOR_PASSWORD or "",
+                database=can20_config.TIDB_VECTOR_DATABASE or "",
+                program_name=can20_config.APPLICATION_NAME,
             ),
         )

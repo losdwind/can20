@@ -5,7 +5,7 @@ from typing import Any, cast
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from configs import dify_config
+from configs import can20_config
 from core.app.apps.advanced_chat.app_config_manager import AdvancedChatAppConfig
 from core.app.apps.base_app_queue_manager import AppQueueManager
 from core.app.apps.workflow_app_runner import WorkflowBasedAppRunner
@@ -69,7 +69,7 @@ class AdvancedChatAppRunner(WorkflowBasedAppRunner):
             user_id = self.application_generate_entity.user_id
 
         workflow_callbacks: list[WorkflowCallback] = []
-        if dify_config.DEBUG:
+        if can20_config.DEBUG:
             workflow_callbacks.append(WorkflowLoggingCallback())
 
         if self.application_generate_entity.single_iteration_run:

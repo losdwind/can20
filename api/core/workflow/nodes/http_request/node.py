@@ -3,7 +3,7 @@ import mimetypes
 from collections.abc import Mapping, Sequence
 from typing import Any, Optional
 
-from configs import dify_config
+from configs import can20_config
 from core.file import File, FileTransferMethod
 from core.tools.tool_file_manager import ToolFileManager
 from core.workflow.entities.node_entities import NodeRunResult
@@ -23,9 +23,9 @@ from .entities import (
 from .exc import HttpRequestNodeError, RequestBodyError
 
 HTTP_REQUEST_DEFAULT_TIMEOUT = HttpRequestNodeTimeout(
-    connect=dify_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT,
-    read=dify_config.HTTP_REQUEST_MAX_READ_TIMEOUT,
-    write=dify_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT,
+    connect=can20_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT,
+    read=can20_config.HTTP_REQUEST_MAX_READ_TIMEOUT,
+    write=can20_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT,
 )
 
 logger = logging.getLogger(__name__)
@@ -47,13 +47,13 @@ class HttpRequestNode(BaseNode[HttpRequestNodeData]):
                 "body": {"type": "none"},
                 "timeout": {
                     **HTTP_REQUEST_DEFAULT_TIMEOUT.model_dump(),
-                    "max_connect_timeout": dify_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT,
-                    "max_read_timeout": dify_config.HTTP_REQUEST_MAX_READ_TIMEOUT,
-                    "max_write_timeout": dify_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT,
+                    "max_connect_timeout": can20_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT,
+                    "max_read_timeout": can20_config.HTTP_REQUEST_MAX_READ_TIMEOUT,
+                    "max_write_timeout": can20_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT,
                 },
             },
             "retry_config": {
-                "max_retries": dify_config.SSRF_DEFAULT_MAX_RETRIES,
+                "max_retries": can20_config.SSRF_DEFAULT_MAX_RETRIES,
                 "retry_interval": 0.5 * (2**2),
                 "retry_enabled": True,
             },

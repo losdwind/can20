@@ -15,7 +15,7 @@ from sqlalchemy import func
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.retrieval.retrieval_methods import RetrievalMethod
 from extensions.ext_storage import storage
 from services.entities.knowledge_entities.knowledge_entities import ParentMode, Rule
@@ -596,7 +596,7 @@ class DocumentSegment(db.Model):  # type: ignore[name-defined]
             nonce = os.urandom(16).hex()
             timestamp = str(int(time.time()))
             data_to_sign = f"image-preview|{upload_file_id}|{timestamp}|{nonce}"
-            secret_key = dify_config.SECRET_KEY.encode() if dify_config.SECRET_KEY else b""
+            secret_key = can20_config.SECRET_KEY.encode() if can20_config.SECRET_KEY else b""
             sign = hmac.new(secret_key, data_to_sign.encode(), hashlib.sha256).digest()
             encoded_sign = base64.urlsafe_b64encode(sign).decode()
 
@@ -612,7 +612,7 @@ class DocumentSegment(db.Model):  # type: ignore[name-defined]
             nonce = os.urandom(16).hex()
             timestamp = str(int(time.time()))
             data_to_sign = f"file-preview|{upload_file_id}|{timestamp}|{nonce}"
-            secret_key = dify_config.SECRET_KEY.encode() if dify_config.SECRET_KEY else b""
+            secret_key = can20_config.SECRET_KEY.encode() if can20_config.SECRET_KEY else b""
             sign = hmac.new(secret_key, data_to_sign.encode(), hashlib.sha256).digest()
             encoded_sign = base64.urlsafe_b64encode(sign).decode()
 

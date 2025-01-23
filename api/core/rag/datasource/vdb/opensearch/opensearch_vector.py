@@ -8,7 +8,7 @@ from opensearchpy import OpenSearch, helpers
 from opensearchpy.helpers import BulkIndexError
 from pydantic import BaseModel, model_validator
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.field import Field
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
@@ -244,11 +244,11 @@ class OpenSearchVectorFactory(AbstractVectorFactory):
             dataset.index_struct = json.dumps(self.gen_index_struct_dict(VectorType.OPENSEARCH, collection_name))
 
         open_search_config = OpenSearchConfig(
-            host=dify_config.OPENSEARCH_HOST or "localhost",
-            port=dify_config.OPENSEARCH_PORT,
-            user=dify_config.OPENSEARCH_USER,
-            password=dify_config.OPENSEARCH_PASSWORD,
-            secure=dify_config.OPENSEARCH_SECURE,
+            host=can20_config.OPENSEARCH_HOST or "localhost",
+            port=can20_config.OPENSEARCH_PORT,
+            user=can20_config.OPENSEARCH_USER,
+            password=can20_config.OPENSEARCH_PASSWORD,
+            secure=can20_config.OPENSEARCH_SECURE,
         )
 
         return OpenSearchVector(collection_name=collection_name, config=open_search_config)

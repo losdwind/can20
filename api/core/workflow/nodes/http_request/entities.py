@@ -6,7 +6,7 @@ from typing import Any, Literal, Optional
 import httpx
 from pydantic import BaseModel, Field, ValidationInfo, field_validator
 
-from configs import dify_config
+from configs import can20_config
 from core.workflow.nodes.base import BaseNodeData
 
 
@@ -58,9 +58,9 @@ class HttpRequestNodeBody(BaseModel):
 
 
 class HttpRequestNodeTimeout(BaseModel):
-    connect: int = dify_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT
-    read: int = dify_config.HTTP_REQUEST_MAX_READ_TIMEOUT
-    write: int = dify_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT
+    connect: int = can20_config.HTTP_REQUEST_MAX_CONNECT_TIMEOUT
+    read: int = can20_config.HTTP_REQUEST_MAX_READ_TIMEOUT
+    write: int = can20_config.HTTP_REQUEST_MAX_WRITE_TIMEOUT
 
 
 class HttpRequestNodeData(BaseNodeData):

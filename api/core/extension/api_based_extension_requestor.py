@@ -2,7 +2,7 @@ from typing import cast
 
 import requests
 
-from configs import dify_config
+from configs import can20_config
 from models.api_based_extension import APIBasedExtensionPoint
 
 
@@ -29,10 +29,10 @@ class APIBasedExtensionRequestor:
         try:
             # proxy support for security
             proxies = None
-            if dify_config.SSRF_PROXY_HTTP_URL and dify_config.SSRF_PROXY_HTTPS_URL:
+            if can20_config.SSRF_PROXY_HTTP_URL and can20_config.SSRF_PROXY_HTTPS_URL:
                 proxies = {
-                    "http": dify_config.SSRF_PROXY_HTTP_URL,
-                    "https": dify_config.SSRF_PROXY_HTTPS_URL,
+                    "http": can20_config.SSRF_PROXY_HTTP_URL,
+                    "https": can20_config.SSRF_PROXY_HTTPS_URL,
                 }
 
             response = requests.request(

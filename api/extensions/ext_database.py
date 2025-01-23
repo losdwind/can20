@@ -1,6 +1,6 @@
-from dify_app import DifyApp
+from can20_app import CAN20App
 from models import db
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     db.init_app(app)

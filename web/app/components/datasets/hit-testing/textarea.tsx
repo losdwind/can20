@@ -6,7 +6,7 @@ import {
 import Image from 'next/image'
 import Button from '../../base/button'
 import { getIcon } from '../common/retrieval-method-info'
-import ModifyExternalRetrievalModal from './modify-external-retrieval-modal'
+import modifyExternalRetrievalModal from './modify-external-retrieval-modal'
 import Tooltip from '@/app/components/base/tooltip'
 import cn from '@/utils/classnames'
 import type { ExternalKnowledgeBaseHitTestingResponse, HitTestingResponse } from '@/models/datasets'
@@ -136,7 +136,7 @@ const TextAreaWithButton = ({
           </div>
           {
             isSettingsOpen && (
-              <ModifyExternalRetrievalModal
+              <modifyExternalRetrievalModal
                 onClose={() => setIsSettingsOpen(false)}
                 onSave={handleSaveExternalRetrievalSettings}
                 initialTopK={externalRetrievalSettings.top_k}

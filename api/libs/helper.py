@@ -15,7 +15,7 @@ from zoneinfo import available_timezones
 from flask import Response, stream_with_context
 from flask_restful import fields  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from core.app.features.rate_limiting.rate_limit import RateLimitGenerator
 from core.file import helpers as file_helpers
 from extensions.ext_redis import redis_client
@@ -232,7 +232,7 @@ class TokenManager:
         if additional_data:
             token_data.update(additional_data)
 
-        expiry_minutes = dify_config.model_dump().get(f"{token_type.upper()}_TOKEN_EXPIRY_MINUTES")
+        expiry_minutes = can20_config.model_dump().get(f"{token_type.upper()}_TOKEN_EXPIRY_MINUTES")
         if expiry_minutes is None:
             raise ValueError(f"Expiry minutes for {token_type} token is not set")
         token_key = cls._get_token_key(token, token_type)

@@ -1,4 +1,4 @@
-# Dify Code of Conduct
+# CAN20 Code of Conduct
 
 ## Our Pledge
 

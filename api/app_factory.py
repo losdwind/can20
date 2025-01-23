@@ -1,35 +1,35 @@
 import logging
 import time
 
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
 # ----------------------------
 # Application Factory Function
 # ----------------------------
-def create_flask_app_with_configs() -> DifyApp:
+def create_flask_app_with_configs() -> CAN20App:
     """
     create a raw flask app
     with configs loaded from .env file
     """
-    dify_app = DifyApp(__name__)
-    dify_app.config.from_mapping(dify_config.model_dump())
+    can20_app = CAN20App(__name__)
+    can20_app.config.from_mapping(can20_config.model_dump())
 
-    return dify_app
+    return can20_app
 
 
-def create_app() -> DifyApp:
+def create_app() -> CAN20App:
     start_time = time.perf_counter()
     app = create_flask_app_with_configs()
     initialize_extensions(app)
     end_time = time.perf_counter()
-    if dify_config.DEBUG:
+    if can20_config.DEBUG:
         logging.info(f"Finished create_app ({round((end_time - start_time) * 1000, 2)} ms)")
     return app
 
 
-def initialize_extensions(app: DifyApp):
+def initialize_extensions(app: CAN20App):
     from extensions import (
         ext_app_metrics,
         ext_blueprints,
@@ -79,14 +79,14 @@ def initialize_extensions(app: DifyApp):
         short_name = ext.__name__.split(".")[-1]
         is_enabled = ext.is_enabled() if hasattr(ext, "is_enabled") else True
         if not is_enabled:
-            if dify_config.DEBUG:
+            if can20_config.DEBUG:
                 logging.info(f"Skipped {short_name}")
             continue
 
         start_time = time.perf_counter()
         ext.init_app(app)
         end_time = time.perf_counter()
-        if dify_config.DEBUG:
+        if can20_config.DEBUG:
             logging.info(f"Loaded {short_name} ({round((end_time - start_time) * 1000, 2)} ms)")
 
 

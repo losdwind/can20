@@ -1,3 +1,3 @@
-export const isDify = () => {
-  return document.referrer.includes('dify.ai')
+export const isCAN20 = () => {
+  return document.referrer.includes('can20.ai')
 }

@@ -5,7 +5,7 @@ from flask import request
 from flask_restful import Resource, reqparse  # type: ignore
 
 import services
-from configs import dify_config
+from configs import can20_config
 from constants.languages import languages
 from controllers.console import api
 from controllers.console.auth.error import (
@@ -48,7 +48,7 @@ class LoginApi(Resource):
         parser.add_argument("language", type=str, required=False, default="en-US", location="json")
         args = parser.parse_args()
 
-        if dify_config.BILLING_ENABLED and BillingService.is_email_in_freeze(args["email"]):
+        if can20_config.BILLING_ENABLED and BillingService.is_email_in_freeze(args["email"]):
             raise AccountInFreezeError()
 
         is_login_error_rate_limit = AccountService.is_login_error_rate_limit(args["email"])

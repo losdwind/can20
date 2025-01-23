@@ -6,7 +6,7 @@ import requests
 import weaviate  # type: ignore
 from pydantic import BaseModel, model_validator
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.field import Field
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
@@ -277,9 +277,9 @@ class WeaviateVectorFactory(AbstractVectorFactory):
         return WeaviateVector(
             collection_name=collection_name,
             config=WeaviateConfig(
-                endpoint=dify_config.WEAVIATE_ENDPOINT or "",
-                api_key=dify_config.WEAVIATE_API_KEY,
-                batch_size=dify_config.WEAVIATE_BATCH_SIZE,
+                endpoint=can20_config.WEAVIATE_ENDPOINT or "",
+                api_key=can20_config.WEAVIATE_API_KEY,
+                batch_size=can20_config.WEAVIATE_BATCH_SIZE,
             ),
             attributes=attributes,
         )

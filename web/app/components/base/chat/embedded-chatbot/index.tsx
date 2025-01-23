@@ -10,7 +10,7 @@ import {
   useEmbeddedChatbotContext,
 } from './context'
 import { useEmbeddedChatbot } from './hooks'
-import { isDify } from './utils'
+import { isCAN20 } from './utils'
 import { useThemeContext } from './theme/theme-context'
 import cn from '@/utils/classnames'
 import { checkOrSetAccessToken } from '@/app/components/share/utils'
@@ -41,7 +41,7 @@ const Chatbot = () => {
   const customConfig = appData?.custom_config
   const site = appData?.site
 
-  const difyIcon = <LogoHeader />
+  const can20Icon = <LogoHeader />
 
   useEffect(() => {
     themeBuilder?.buildTheme(site?.chat_color_theme, site?.chat_color_theme_inverted)
@@ -49,7 +49,7 @@ const Chatbot = () => {
       if (customConfig)
         document.title = `${site.title}`
       else
-        document.title = `${site.title} - Powered by Dify`
+        document.title = `${site.title} - Powered by CAN20`
     }
   }, [site, customConfig, themeBuilder])
 
@@ -69,7 +69,7 @@ const Chatbot = () => {
       <Header
         isMobile={isMobile}
         title={site?.title || ''}
-        customerIcon={isDify() ? difyIcon : ''}
+        customerIcon={isCAN20() ? can20Icon : ''}
         theme={themeBuilder?.theme}
         onCreateNewChat={handleNewConversation}
       />

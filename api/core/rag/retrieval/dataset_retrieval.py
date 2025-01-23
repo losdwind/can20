@@ -149,7 +149,7 @@ class DatasetRetrieval:
                 message_id,
             )
 
-        dify_documents = [item for item in all_documents if item.provider == "dify"]
+        can20_documents = [item for item in all_documents if item.provider == "can20"]
         external_documents = [item for item in all_documents if item.provider == "external"]
         document_context_list = []
         retrieval_resource_list = []
@@ -166,9 +166,9 @@ class DatasetRetrieval:
                 "content": item.page_content,
             }
             retrieval_resource_list.append(source)
-        # deal with dify documents
-        if dify_documents:
-            records = RetrievalService.format_retrieval_documents(dify_documents)
+        # deal with can20 documents
+        if can20_documents:
+            records = RetrievalService.format_retrieval_documents(can20_documents)
             if records:
                 for record in records:
                     segment = record.segment
@@ -427,8 +427,8 @@ class DatasetRetrieval:
         self, documents: list[Document], message_id: Optional[str] = None, timer: Optional[dict] = None
     ) -> None:
         """Handle retrieval end."""
-        dify_documents = [document for document in documents if document.provider == "dify"]
-        for document in dify_documents:
+        can20_documents = [document for document in documents if document.provider == "can20"]
+        for document in can20_documents:
             if document.metadata is not None:
                 query = db.session.query(DocumentSegment).filter(
                     DocumentSegment.index_node_id == document.metadata["doc_id"]

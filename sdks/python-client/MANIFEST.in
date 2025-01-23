@@ -1,1 +1,1 @@
-recursive-include dify_client *.py
+recursive-include can20_client *.py

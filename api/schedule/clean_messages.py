@@ -5,7 +5,7 @@ import click
 from werkzeug.exceptions import NotFound
 
 import app
-from configs import dify_config
+from configs import can20_config
 from extensions.ext_database import db
 from extensions.ext_redis import redis_client
 from models.model import (
@@ -26,7 +26,7 @@ def clean_messages():
     click.echo(click.style("Start clean messages.", fg="green"))
     start_at = time.perf_counter()
     plan_sandbox_clean_message_day = datetime.datetime.now() - datetime.timedelta(
-        days=dify_config.PLAN_SANDBOX_CLEAN_MESSAGE_DAY_SETTING
+        days=can20_config.PLAN_SANDBOX_CLEAN_MESSAGE_DAY_SETTING
     )
     while True:
         try:

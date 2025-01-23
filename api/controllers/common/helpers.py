@@ -9,7 +9,7 @@ from uuid import uuid4
 import httpx
 from pydantic import BaseModel
 
-from configs import dify_config
+from configs import can20_config
 
 
 class FileInfo(BaseModel):
@@ -88,10 +88,10 @@ def get_parameters_from_feature_dict(*, features_dict: Mapping[str, Any], user_i
             },
         ),
         "system_parameters": {
-            "image_file_size_limit": dify_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT,
-            "video_file_size_limit": dify_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT,
-            "audio_file_size_limit": dify_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT,
-            "file_size_limit": dify_config.UPLOAD_FILE_SIZE_LIMIT,
-            "workflow_file_upload_limit": dify_config.WORKFLOW_FILE_UPLOAD_LIMIT,
+            "image_file_size_limit": can20_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT,
+            "video_file_size_limit": can20_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT,
+            "audio_file_size_limit": can20_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT,
+            "file_size_limit": can20_config.UPLOAD_FILE_SIZE_LIMIT,
+            "workflow_file_upload_limit": can20_config.WORKFLOW_FILE_UPLOAD_LIMIT,
         },
     }

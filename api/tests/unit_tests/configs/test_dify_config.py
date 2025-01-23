@@ -5,7 +5,7 @@ import pytest
 from flask import Flask
 from yarl import URL
 
-from configs.app_config import DifyConfig
+from configs.app_config import CAN20Config
 
 EXAMPLE_ENV_FILENAME = ".env"
 
@@ -26,10 +26,10 @@ def example_env_file(tmp_path, monkeypatch) -> str:
     return str(file_path)
 
 
-def test_dify_config_undefined_entry(example_env_file):
+def test_can20_config_undefined_entry(example_env_file):
     # NOTE: See https://github.com/microsoft/pylance-release/issues/6099 for more details about this type error.
     # load dotenv file with pydantic-settings
-    config = DifyConfig(_env_file=example_env_file)
+    config = CAN20Config(_env_file=example_env_file)
 
     # entries not defined in app settings
     with pytest.raises(TypeError):
@@ -39,11 +39,11 @@ def test_dify_config_undefined_entry(example_env_file):
 
 # NOTE: If there is a `.env` file in your Workspace, this test might not succeed as expected.
 # This is due to `pymilvus` loading all the variables from the `.env` file into `os.environ`.
-def test_dify_config(example_env_file):
+def test_can20_config(example_env_file):
     # clear system environment variables
     os.environ.clear()
     # load dotenv file with pydantic-settings
-    config = DifyConfig(_env_file=example_env_file)
+    config = CAN20Config(_env_file=example_env_file)
 
     # constant values
     assert config.COMMIT_SHA == ""
@@ -68,7 +68,7 @@ def test_flask_configs(example_env_file):
     flask_app = Flask("app")
     # clear system environment variables
     os.environ.clear()
-    flask_app.config.from_mapping(DifyConfig(_env_file=example_env_file).model_dump())  # pyright: ignore
+    flask_app.config.from_mapping(CAN20Config(_env_file=example_env_file).model_dump())  # pyright: ignore
     config = flask_app.config
 
     # configs read from pydantic-settings
@@ -83,7 +83,7 @@ def test_flask_configs(example_env_file):
     # fallback to alias choices value as CONSOLE_API_URL
     assert config["FILES_URL"] == "https://example.com"
 
-    assert config["SQLALCHEMY_DATABASE_URI"] == "postgresql://postgres:@localhost:5432/dify"
+    assert config["SQLALCHEMY_DATABASE_URI"] == "postgresql://postgres:@localhost:5432/can20"
     assert config["SQLALCHEMY_ENGINE_OPTIONS"] == {
         "connect_args": {
             "options": "-c timezone=UTC",

@@ -2,7 +2,7 @@ from collections.abc import Generator
 
 import tos  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from extensions.storage.base_storage import BaseStorage
 
 
@@ -11,12 +11,12 @@ class VolcengineTosStorage(BaseStorage):
 
     def __init__(self):
         super().__init__()
-        self.bucket_name = dify_config.VOLCENGINE_TOS_BUCKET_NAME
+        self.bucket_name = can20_config.VOLCENGINE_TOS_BUCKET_NAME
         self.client = tos.TosClientV2(
-            ak=dify_config.VOLCENGINE_TOS_ACCESS_KEY,
-            sk=dify_config.VOLCENGINE_TOS_SECRET_KEY,
-            endpoint=dify_config.VOLCENGINE_TOS_ENDPOINT,
-            region=dify_config.VOLCENGINE_TOS_REGION,
+            ak=can20_config.VOLCENGINE_TOS_ACCESS_KEY,
+            sk=can20_config.VOLCENGINE_TOS_SECRET_KEY,
+            endpoint=can20_config.VOLCENGINE_TOS_ENDPOINT,
+            region=can20_config.VOLCENGINE_TOS_REGION,
         )
 
     def save(self, filename, data):

@@ -1,5 +1,5 @@
-from core.callback_handler.agent_tool_callback_handler import DifyAgentCallbackHandler
+from core.callback_handler.agent_tool_callback_handler import CAN20AgentCallbackHandler
 
 
-class DifyWorkflowCallbackHandler(DifyAgentCallbackHandler):
+class CAN20WorkflowCallbackHandler(CAN20AgentCallbackHandler):
     """Callback Handler that prints to std out."""

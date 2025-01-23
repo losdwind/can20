@@ -194,14 +194,14 @@ class WorkflowTool(Tool):
         for key, value in outputs.items():
             if isinstance(value, list):
                 for item in value:
-                    if isinstance(item, dict) and item.get("dify_model_identity") == FILE_MODEL_IDENTITY:
+                    if isinstance(item, dict) and item.get("can20_model_identity") == FILE_MODEL_IDENTITY:
                         item["tool_file_id"] = item.get("related_id")
                         file = build_from_mapping(
                             mapping=item,
                             tenant_id=str(cast(Tool.Runtime, self.runtime).tenant_id),
                         )
                         files.append(file)
-            elif isinstance(value, dict) and value.get("dify_model_identity") == FILE_MODEL_IDENTITY:
+            elif isinstance(value, dict) and value.get("can20_model_identity") == FILE_MODEL_IDENTITY:
                 value["tool_file_id"] = value.get("related_id")
                 file = build_from_mapping(
                     mapping=value,

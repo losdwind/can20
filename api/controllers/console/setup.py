@@ -1,10 +1,10 @@
 from flask import request
 from flask_restful import Resource, reqparse  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from libs.helper import StrLen, email, extract_remote_ip
 from libs.password import valid_password
-from models.model import DifySetup
+from models.model import CAN20Setup
 from services.account_service import RegisterService, TenantService
 
 from . import api
@@ -15,7 +15,7 @@ from .wraps import only_edition_self_hosted
 
 class SetupApi(Resource):
     def get(self):
-        if dify_config.EDITION == "SELF_HOSTED":
+        if can20_config.EDITION == "SELF_HOSTED":
             setup_status = get_setup_status()
             if setup_status:
                 return {"step": "finished", "setup_at": setup_status.setup_at.isoformat()}
@@ -51,8 +51,8 @@ class SetupApi(Resource):
 
 
 def get_setup_status():
-    if dify_config.EDITION == "SELF_HOSTED":
-        return DifySetup.query.first()
+    if can20_config.EDITION == "SELF_HOSTED":
+        return CAN20Setup.query.first()
     return True
 
 

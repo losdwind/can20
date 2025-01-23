@@ -1,3 +1,3 @@
-from .app_config import DifyConfig
+from .app_config import CAN20Config
 
-dify_config = DifyConfig()
+can20_config = CAN20Config()

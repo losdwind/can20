@@ -10,7 +10,7 @@ import { RiApps2Line, RiFocus2Line } from '@remixicon/react'
 import SegmentCard from '../documents/detail/completed/SegmentCard'
 import Textarea from './textarea'
 import s from './style.module.css'
-import ModifyRetrievalModal from './modify-retrieval-modal'
+import modifyRetrievalModal from './modify-retrieval-modal'
 import ResultItem from './components/result-item'
 import ResultItemExternal from './components/result-item-external'
 import cn from '@/utils/classnames'
@@ -67,7 +67,7 @@ const HitTestingPage: FC<Props> = ({ datasetId }: Props) => {
   const isExternal = currentDataset?.provider === 'external'
 
   const [retrievalConfig, setRetrievalConfig] = useState(currentDataset?.retrieval_model_dict as RetrievalConfig)
-  const [isShowModifyRetrievalModal, setIsShowModifyRetrievalModal] = useState(false)
+  const [isShowmodifyRetrievalModal, setIsShowmodifyRetrievalModal] = useState(false)
   const [isShowRightPanel, { setTrue: showRightPanel, setFalse: hideRightPanel, set: setShowRightPanel }] = useBoolean(!isMobile)
   const renderHitResults = (results: HitTesting[] | ExternalKnowledgeBaseHitTesting[]) => (
     <div className='h-full flex flex-col py-3 px-4 rounded-t-2xl bg-background-body'>
@@ -123,7 +123,7 @@ const HitTestingPage: FC<Props> = ({ datasetId }: Props) => {
           setText={setText}
           text={text}
           isExternal={isExternal}
-          onClickRetrievalMethod={() => setIsShowModifyRetrievalModal(true)}
+          onClickRetrievalMethod={() => setIsShowmodifyRetrievalModal(true)}
           retrievalConfig={retrievalConfig}
           isEconomy={currentDataset?.indexing_technique === 'economy'}
         />
@@ -199,15 +199,15 @@ const HitTestingPage: FC<Props> = ({ datasetId }: Props) => {
           }
         </div>
       </FloatRightContainer>
-      <Drawer unmount={true} isOpen={isShowModifyRetrievalModal} onClose={() => setIsShowModifyRetrievalModal(false)} footer={null} mask={isMobile} panelClassname='mt-16 mx-2 sm:mr-2 mb-3 !p-0 !max-w-[640px] rounded-xl'>
-        <ModifyRetrievalModal
+      <Drawer unmount={true} isOpen={isShowmodifyRetrievalModal} onClose={() => setIsShowmodifyRetrievalModal(false)} footer={null} mask={isMobile} panelClassname='mt-16 mx-2 sm:mr-2 mb-3 !p-0 !max-w-[640px] rounded-xl'>
+        <modifyRetrievalModal
           indexMethod={currentDataset?.indexing_technique || ''}
           value={retrievalConfig}
-          isShow={isShowModifyRetrievalModal}
-          onHide={() => setIsShowModifyRetrievalModal(false)}
+          isShow={isShowmodifyRetrievalModal}
+          onHide={() => setIsShowmodifyRetrievalModal(false)}
           onSave={(value) => {
             setRetrievalConfig(value)
-            setIsShowModifyRetrievalModal(false)
+            setIsShowmodifyRetrievalModal(false)
           }}
         />
       </Drawer>

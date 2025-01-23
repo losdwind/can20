@@ -1,12 +1,12 @@
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
 def is_enabled() -> bool:
-    return dify_config.API_COMPRESSION_ENABLED
+    return can20_config.API_COMPRESSION_ENABLED
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     from flask_compress import Compress  # type: ignore
 
     compress = Compress()

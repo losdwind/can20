@@ -7,16 +7,16 @@ import time
 
 import httpx
 
-from configs import dify_config
+from configs import can20_config
 
-SSRF_DEFAULT_MAX_RETRIES = dify_config.SSRF_DEFAULT_MAX_RETRIES
+SSRF_DEFAULT_MAX_RETRIES = can20_config.SSRF_DEFAULT_MAX_RETRIES
 
 proxy_mounts = (
     {
-        "http://": httpx.HTTPTransport(proxy=dify_config.SSRF_PROXY_HTTP_URL),
-        "https://": httpx.HTTPTransport(proxy=dify_config.SSRF_PROXY_HTTPS_URL),
+        "http://": httpx.HTTPTransport(proxy=can20_config.SSRF_PROXY_HTTP_URL),
+        "https://": httpx.HTTPTransport(proxy=can20_config.SSRF_PROXY_HTTPS_URL),
     }
-    if dify_config.SSRF_PROXY_HTTP_URL and dify_config.SSRF_PROXY_HTTPS_URL
+    if can20_config.SSRF_PROXY_HTTP_URL and can20_config.SSRF_PROXY_HTTPS_URL
     else None
 )
 
@@ -38,18 +38,18 @@ def make_request(method, url, max_retries=SSRF_DEFAULT_MAX_RETRIES, **kwargs):
 
     if "timeout" not in kwargs:
         kwargs["timeout"] = httpx.Timeout(
-            timeout=dify_config.SSRF_DEFAULT_TIME_OUT,
-            connect=dify_config.SSRF_DEFAULT_CONNECT_TIME_OUT,
-            read=dify_config.SSRF_DEFAULT_READ_TIME_OUT,
-            write=dify_config.SSRF_DEFAULT_WRITE_TIME_OUT,
+            timeout=can20_config.SSRF_DEFAULT_TIME_OUT,
+            connect=can20_config.SSRF_DEFAULT_CONNECT_TIME_OUT,
+            read=can20_config.SSRF_DEFAULT_READ_TIME_OUT,
+            write=can20_config.SSRF_DEFAULT_WRITE_TIME_OUT,
         )
 
     retries = 0
     stream = kwargs.pop("stream", False)
     while retries <= max_retries:
         try:
-            if dify_config.SSRF_PROXY_ALL_URL:
-                with httpx.Client(proxy=dify_config.SSRF_PROXY_ALL_URL) as client:
+            if can20_config.SSRF_PROXY_ALL_URL:
+                with httpx.Client(proxy=can20_config.SSRF_PROXY_ALL_URL) as client:
                     response = client.request(method=method, url=url, **kwargs)
             elif proxy_mounts:
                 with httpx.Client(mounts=proxy_mounts) as client:

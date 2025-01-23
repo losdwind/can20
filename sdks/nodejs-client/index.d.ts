@@ -14,7 +14,7 @@ interface HeaderParams {
 interface User {
 }
 
-export declare class DifyClient {
+export declare class CAN20Client {
   constructor(apiKey: string, baseUrl?: string);
 
   updateApiKey(apiKey: string): void;
@@ -39,7 +39,7 @@ export declare class DifyClient {
   getMeta(user: User): Promise<any>;
 }
 
-export declare class CompletionClient extends DifyClient {
+export declare class CompletionClient extends CAN20Client {
   createCompletionMessage(
     inputs: any,
     user: User,
@@ -48,7 +48,7 @@ export declare class CompletionClient extends DifyClient {
   ): Promise<any>;
 }
 
-export declare class ChatClient extends DifyClient {
+export declare class ChatClient extends CAN20Client {
   createChatMessage(
     inputs: any,
     query: string,
@@ -84,7 +84,7 @@ export declare class ChatClient extends DifyClient {
   audioToText(data: FormData): Promise<any>;
 }
 
-export declare class WorkflowClient extends DifyClient {
+export declare class WorkflowClient extends CAN20Client {
   run(inputs: any, user: User, stream?: boolean,): Promise<any>;
 
   stop(task_id: string, user: User): Promise<any>;

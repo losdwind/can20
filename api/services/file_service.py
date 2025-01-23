@@ -6,7 +6,7 @@ from typing import Any, Literal, Union
 from flask_login import current_user  # type: ignore
 from werkzeug.exceptions import NotFound
 
-from configs import dify_config
+from configs import can20_config
 from constants import (
     AUDIO_EXTENSIONS,
     DOCUMENT_EXTENSIONS,
@@ -69,7 +69,7 @@ class FileService:
         # save file to db
         upload_file = UploadFile(
             tenant_id=current_tenant_id or "",
-            storage_type=dify_config.STORAGE_TYPE,
+            storage_type=can20_config.STORAGE_TYPE,
             key=file_key,
             name=filename,
             size=file_size,
@@ -91,13 +91,13 @@ class FileService:
     @staticmethod
     def is_file_size_within_limit(*, extension: str, file_size: int) -> bool:
         if extension in IMAGE_EXTENSIONS:
-            file_size_limit = dify_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT * 1024 * 1024
+            file_size_limit = can20_config.UPLOAD_IMAGE_FILE_SIZE_LIMIT * 1024 * 1024
         elif extension in VIDEO_EXTENSIONS:
-            file_size_limit = dify_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT * 1024 * 1024
+            file_size_limit = can20_config.UPLOAD_VIDEO_FILE_SIZE_LIMIT * 1024 * 1024
         elif extension in AUDIO_EXTENSIONS:
-            file_size_limit = dify_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT * 1024 * 1024
+            file_size_limit = can20_config.UPLOAD_AUDIO_FILE_SIZE_LIMIT * 1024 * 1024
         else:
-            file_size_limit = dify_config.UPLOAD_FILE_SIZE_LIMIT * 1024 * 1024
+            file_size_limit = can20_config.UPLOAD_FILE_SIZE_LIMIT * 1024 * 1024
 
         return file_size <= file_size_limit
 
@@ -115,7 +115,7 @@ class FileService:
         # save file to db
         upload_file = UploadFile(
             tenant_id=current_user.current_tenant_id,
-            storage_type=dify_config.STORAGE_TYPE,
+            storage_type=can20_config.STORAGE_TYPE,
             key=file_key,
             name=text_name,
             size=len(text),

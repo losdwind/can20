@@ -1,6 +1,6 @@
 import boto3  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 
 
 class ExternalDatasetTestService:
@@ -10,8 +10,8 @@ class ExternalDatasetTestService:
         # get bedrock client
         client = boto3.client(
             "bedrock-agent-runtime",
-            aws_secret_access_key=dify_config.AWS_SECRET_ACCESS_KEY,
-            aws_access_key_id=dify_config.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=can20_config.AWS_SECRET_ACCESS_KEY,
+            aws_access_key_id=can20_config.AWS_ACCESS_KEY_ID,
             # example: us-east-1
             region_name="us-east-1",
         )

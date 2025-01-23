@@ -7,7 +7,7 @@ from pydantic import BaseModel, model_validator
 from pymilvus import MilvusClient, MilvusException  # type: ignore
 from pymilvus.milvus_client import IndexParams  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.field import Field
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
@@ -358,11 +358,11 @@ class MilvusVectorFactory(AbstractVectorFactory):
         return MilvusVector(
             collection_name=collection_name,
             config=MilvusConfig(
-                uri=dify_config.MILVUS_URI or "",
-                token=dify_config.MILVUS_TOKEN or "",
-                user=dify_config.MILVUS_USER or "",
-                password=dify_config.MILVUS_PASSWORD or "",
-                database=dify_config.MILVUS_DATABASE or "",
-                enable_hybrid_search=dify_config.MILVUS_ENABLE_HYBRID_SEARCH or False,
+                uri=can20_config.MILVUS_URI or "",
+                token=can20_config.MILVUS_TOKEN or "",
+                user=can20_config.MILVUS_USER or "",
+                password=can20_config.MILVUS_PASSWORD or "",
+                database=can20_config.MILVUS_DATABASE or "",
+                enable_hybrid_search=can20_config.MILVUS_ENABLE_HYBRID_SEARCH or False,
             ),
         )

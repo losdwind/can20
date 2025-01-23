@@ -15,7 +15,7 @@ import yaml  # type: ignore
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
-from configs import dify_config
+from configs import can20_config
 from core.file import File, FileTransferMethod, file_manager
 from core.helper import ssrf_proxy
 from core.variables import ArrayFileSegment
@@ -344,7 +344,7 @@ def _extract_text_from_pptx(file_content: bytes) -> str:
     from unstructured.partition.pptx import partition_pptx
 
     try:
-        if dify_config.UNSTRUCTURED_API_URL and dify_config.UNSTRUCTURED_API_KEY:
+        if can20_config.UNSTRUCTURED_API_URL and can20_config.UNSTRUCTURED_API_KEY:
             with tempfile.NamedTemporaryFile(suffix=".pptx", delete=False) as temp_file:
                 temp_file.write(file_content)
                 temp_file.flush()
@@ -352,8 +352,8 @@ def _extract_text_from_pptx(file_content: bytes) -> str:
                     elements = partition_via_api(
                         file=file,
                         metadata_filename=temp_file.name,
-                        api_url=dify_config.UNSTRUCTURED_API_URL,
-                        api_key=dify_config.UNSTRUCTURED_API_KEY,
+                        api_url=can20_config.UNSTRUCTURED_API_URL,
+                        api_key=can20_config.UNSTRUCTURED_API_KEY,
                     )
                 os.unlink(temp_file.name)
         else:

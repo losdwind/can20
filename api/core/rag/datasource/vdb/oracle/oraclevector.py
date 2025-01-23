@@ -10,7 +10,7 @@ import numpy
 import oracledb
 from pydantic import BaseModel, model_validator
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -287,10 +287,10 @@ class OracleVectorFactory(AbstractVectorFactory):
         return OracleVector(
             collection_name=collection_name,
             config=OracleVectorConfig(
-                host=dify_config.ORACLE_HOST or "localhost",
-                port=dify_config.ORACLE_PORT,
-                user=dify_config.ORACLE_USER or "system",
-                password=dify_config.ORACLE_PASSWORD or "oracle",
-                database=dify_config.ORACLE_DATABASE or "orcl",
+                host=can20_config.ORACLE_HOST or "localhost",
+                port=can20_config.ORACLE_PORT,
+                user=can20_config.ORACLE_USER or "system",
+                password=can20_config.ORACLE_PASSWORD or "oracle",
+                database=can20_config.ORACLE_DATABASE or "orcl",
             ),
         )

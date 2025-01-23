@@ -17,7 +17,7 @@ from tests.integration_tests.vdb.test_vector_store import (
 @pytest.fixture
 def oceanbase_vector():
     return OceanBaseVector(
-        "dify_test_collection",
+        "can20_test_collection",
         config=OceanBaseVectorConfig(
             host="127.0.0.1",
             port="2881",

@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any, Optional, cast
 
 from flask import Flask, current_app
 
-from configs import dify_config
+from configs import can20_config
 from core.variables import ArrayVariable, IntegerVariable, NoneVariable
 from core.workflow.entities.node_entities import (
     NodeRunMetadataKey,
@@ -133,8 +133,8 @@ class IterationNode(BaseNode[IterationNodeData]):
             graph=iteration_graph,
             graph_config=graph_config,
             variable_pool=variable_pool,
-            max_execution_steps=dify_config.WORKFLOW_MAX_EXECUTION_STEPS,
-            max_execution_time=dify_config.WORKFLOW_MAX_EXECUTION_TIME,
+            max_execution_steps=can20_config.WORKFLOW_MAX_EXECUTION_STEPS,
+            max_execution_time=can20_config.WORKFLOW_MAX_EXECUTION_TIME,
             thread_pool_id=self.thread_pool_id,
         )
 
@@ -167,7 +167,7 @@ class IterationNode(BaseNode[IterationNodeData]):
                 futures: list[Future] = []
                 q: Queue = Queue()
                 thread_pool = GraphEngineThreadPool(
-                    max_workers=self.node_data.parallel_nums, max_submit_count=dify_config.MAX_SUBMIT_COUNT
+                    max_workers=self.node_data.parallel_nums, max_submit_count=can20_config.MAX_SUBMIT_COUNT
                 )
                 for index, item in enumerate(iterator_list_value):
                     future: Future = thread_pool.submit(

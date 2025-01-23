@@ -11,7 +11,7 @@ from flask_login import current_user  # type: ignore
 from sqlalchemy import func
 from werkzeug.exceptions import NotFound
 
-from configs import dify_config
+from configs import can20_config
 from core.errors.error import LLMBadRequestError, ProviderTokenNotInitError
 from core.model_manager import ModelManager
 from core.model_runtime.entities.model_entities import ModelType
@@ -468,7 +468,7 @@ class DocumentService:
             "segmentation": {"delimiter": "\n", "max_tokens": 500, "chunk_overlap": 50},
         },
         "limits": {
-            "indexing_max_segmentation_tokens_length": dify_config.INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH,
+            "indexing_max_segmentation_tokens_length": can20_config.INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH,
         },
     }
 
@@ -775,7 +775,7 @@ class DocumentService:
                     elif knowledge_config.data_source.info_list.data_source_type == "website_crawl":
                         website_info = knowledge_config.data_source.info_list.website_info_list
                         count = len(website_info.urls)  # type: ignore
-                    batch_upload_limit = int(dify_config.BATCH_UPLOAD_LIMIT)
+                    batch_upload_limit = int(can20_config.BATCH_UPLOAD_LIMIT)
                     if count > batch_upload_limit:
                         raise ValueError(f"You have reached the batch upload limit of {batch_upload_limit}.")
 
@@ -1211,7 +1211,7 @@ class DocumentService:
                 website_info = knowledge_config.data_source.info_list.website_info_list  # type: ignore
                 if website_info:
                     count = len(website_info.urls)
-            batch_upload_limit = int(dify_config.BATCH_UPLOAD_LIMIT)
+            batch_upload_limit = int(can20_config.BATCH_UPLOAD_LIMIT)
             if count > batch_upload_limit:
                 raise ValueError(f"You have reached the batch upload limit of {batch_upload_limit}.")
 

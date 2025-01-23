@@ -1,13 +1,13 @@
 {
-  "name": "dify-client",
+  "name": "can20-client",
   "version": "2.3.2",
-  "description": "This is the Node.js SDK for the Dify.AI API, which allows you to easily integrate Dify.AI into your Node.js applications.",
+  "description": "This is the Node.js SDK for the CAN20.AI API, which allows you to easily integrate CAN20.AI into your Node.js applications.",
   "main": "index.js",
   "type": "module",
   "types":"index.d.ts",
   "keywords": [
-    "Dify",
-    "Dify.AI",
+    "CAN20",
+    "CAN20.AI",
     "LLM"
   ],
   "author": "Joel",

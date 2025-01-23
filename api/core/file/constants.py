@@ -1,1 +1,1 @@
-FILE_MODEL_IDENTITY = "__dify__file__"
+FILE_MODEL_IDENTITY = "__can20__file__"

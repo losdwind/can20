@@ -13,7 +13,7 @@ from pymochow.model.enum import FieldType, IndexState, IndexType, MetricType, Se
 from pymochow.model.schema import Field, HNSWParams, Schema, VectorIndex  # type: ignore
 from pymochow.model.table import AnnSearch, HNSWSearchParams, Partition, Row  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -255,7 +255,7 @@ class BaiduVector(BaseVector):
                 replication=self._client_config.replicas,
                 partition=Partition(partition_num=self._client_config.shard),
                 schema=Schema(fields=fields, indexes=indexes),
-                description="Table for Dify",
+                description="Table for CAN20",
             )
 
             # Wait for table created
@@ -280,12 +280,12 @@ class BaiduVectorFactory(AbstractVectorFactory):
         return BaiduVector(
             collection_name=collection_name,
             config=BaiduConfig(
-                endpoint=dify_config.BAIDU_VECTOR_DB_ENDPOINT or "",
-                connection_timeout_in_mills=dify_config.BAIDU_VECTOR_DB_CONNECTION_TIMEOUT_MS,
-                account=dify_config.BAIDU_VECTOR_DB_ACCOUNT or "",
-                api_key=dify_config.BAIDU_VECTOR_DB_API_KEY or "",
-                database=dify_config.BAIDU_VECTOR_DB_DATABASE or "",
-                shard=dify_config.BAIDU_VECTOR_DB_SHARD,
-                replicas=dify_config.BAIDU_VECTOR_DB_REPLICAS,
+                endpoint=can20_config.BAIDU_VECTOR_DB_ENDPOINT or "",
+                connection_timeout_in_mills=can20_config.BAIDU_VECTOR_DB_CONNECTION_TIMEOUT_MS,
+                account=can20_config.BAIDU_VECTOR_DB_ACCOUNT or "",
+                api_key=can20_config.BAIDU_VECTOR_DB_API_KEY or "",
+                database=can20_config.BAIDU_VECTOR_DB_DATABASE or "",
+                shard=can20_config.BAIDU_VECTOR_DB_SHARD,
+                replicas=can20_config.BAIDU_VECTOR_DB_REPLICAS,
             ),
         )

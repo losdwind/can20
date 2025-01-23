@@ -1,4 +1,4 @@
-# Dify Frontend
+# CAN20 Frontend
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -16,7 +16,7 @@ npm install
 yarn install --frozen-lockfile
 ```
 
-Then, configure the environment variables. Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. Modify the values of these environment variables according to your requirements:
+Then, configure the environment variables. Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. modify the values of these environment variables according to your requirements:
 
 ```bash
 cp .env.example .env.local
@@ -29,11 +29,11 @@ NEXT_PUBLIC_DEPLOY_ENV=DEVELOPMENT
 NEXT_PUBLIC_EDITION=SELF_HOSTED
 # The base URL of console application, refers to the Console base URL of WEB service if console domain is
 # different from api or web app domain.
-# example: http://cloud.dify.ai/console/api
+# example: http://cloud.can20.ai/console/api
 NEXT_PUBLIC_API_PREFIX=http://localhost:5001/console/api
 # The URL for Web APP, refers to the Web App base URL of WEB service if web app domain is different from
 # console or api domain.
-# example: http://udify.app/api
+# example: http://ucan20.app/api
 NEXT_PUBLIC_PUBLIC_API_PREFIX=http://localhost:5001/api
 
 # SENTRY
@@ -111,8 +111,8 @@ If you are not familiar with writing tests, here is some code to refer to:
 
 ## Documentation
 
-Visit <https://docs.dify.ai/getting-started/readme> to view the full documentation.
+Visit <https://docs.can20.ai/getting-started/readme> to view the full documentation.
 
 ## Community
 
-The Dify community can be found on [Discord community](https://discord.gg/5AEfbxcd9k), where you can ask questions, voice ideas, and share your projects.
+The CAN20 community can be found on [Discord community](https://discord.gg/5AEfbxcd9k), where you can ask questions, voice ideas, and share your projects.

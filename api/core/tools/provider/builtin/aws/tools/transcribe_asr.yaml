@@ -8,7 +8,7 @@ identity:
   icon: icon.svg
 description:
   human:
-    en_US: A tool for ASR (Automatic Speech Recognition) - https://github.com/aws-samples/dify-aws-tool
+    en_US: A tool for ASR (Automatic Speech Recognition) - https://github.com/aws-samples/can20-aws-tool
     zh_Hans: AWS 语音识别转录服务, 请参考 https://aws.amazon.com/cn/pm/transcribe/#Learn_More_About_Amazon_Transcribe
     pt_BR: A tool for ASR (Automatic Speech Recognition).
   llm: A tool for ASR (Automatic Speech Recognition).

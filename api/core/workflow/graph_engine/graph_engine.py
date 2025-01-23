@@ -10,7 +10,7 @@ from typing import Any, Optional, cast
 
 from flask import Flask, current_app
 
-from configs import dify_config
+from configs import can20_config
 from core.app.apps.base_app_queue_manager import GenerateTaskStoppedError
 from core.app.entities.app_invoke_entities import InvokeFrom
 from core.workflow.entities.node_entities import NodeRunMetadataKey, NodeRunResult
@@ -61,7 +61,7 @@ class GraphEngineThreadPool(ThreadPoolExecutor):
         thread_name_prefix="",
         initializer=None,
         initargs=(),
-        max_submit_count=dify_config.MAX_SUBMIT_COUNT,
+        max_submit_count=can20_config.MAX_SUBMIT_COUNT,
     ) -> None:
         super().__init__(max_workers, thread_name_prefix, initializer, initargs)
         self.max_submit_count = max_submit_count
@@ -101,7 +101,7 @@ class GraphEngine:
         max_execution_time: int,
         thread_pool_id: Optional[str] = None,
     ) -> None:
-        thread_pool_max_submit_count = dify_config.MAX_SUBMIT_COUNT
+        thread_pool_max_submit_count = can20_config.MAX_SUBMIT_COUNT
         thread_pool_max_workers = 10
 
         # init thread pool

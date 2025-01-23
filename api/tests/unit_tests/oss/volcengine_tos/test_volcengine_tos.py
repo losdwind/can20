@@ -16,8 +16,8 @@ class TestVolcengineTos(BaseStorageTest):
         self.storage = VolcengineTosStorage()
         self.storage.bucket_name = get_example_bucket()
         self.storage.client = TosClientV2(
-            ak="dify",
-            sk="dify",
+            ak="can20",
+            sk="can20",
             endpoint="https://xxx.volces.com",
             region="cn-beijing",
         )

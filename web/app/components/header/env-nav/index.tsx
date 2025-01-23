@@ -12,8 +12,8 @@ const headerEnvClassName: { [k: string]: string } = {
 
 const EnvNav = () => {
   const { t } = useTranslation()
-  const { langeniusVersionInfo } = useAppContext()
-  const showEnvTag = langeniusVersionInfo.current_env === 'TESTING' || langeniusVersionInfo.current_env === 'DEVELOPMENT'
+  const { chainainexusVersionInfo } = useAppContext()
+  const showEnvTag = chainainexusVersionInfo.current_env === 'TESTING' || chainainexusVersionInfo.current_env === 'DEVELOPMENT'
 
   if (!showEnvTag)
     return null
@@ -21,10 +21,10 @@ const EnvNav = () => {
   return (
     <div className={`
       flex items-center h-[22px] mr-4 rounded-md px-2 text-xs font-medium border
-      ${headerEnvClassName[langeniusVersionInfo.current_env]}
+      ${headerEnvClassName[chainainexusVersionInfo.current_env]}
     `}>
       {
-        langeniusVersionInfo.current_env === 'TESTING' && (
+        chainainexusVersionInfo.current_env === 'TESTING' && (
           <>
             <Beaker02 className='w-3 h-3 mr-1' />
             {t('common.environment.testing')}
@@ -32,7 +32,7 @@ const EnvNav = () => {
         )
       }
       {
-        langeniusVersionInfo.current_env === 'DEVELOPMENT' && (
+        chainainexusVersionInfo.current_env === 'DEVELOPMENT' && (
           <>
             <TerminalSquare className='w-3 h-3 mr-1' />
             {t('common.environment.development')}

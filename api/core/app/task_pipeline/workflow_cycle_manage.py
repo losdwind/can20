@@ -818,7 +818,7 @@ class WorkflowCycleManage:
         if not value:
             return None
 
-        if isinstance(value, dict) and value.get("dify_model_identity") == FILE_MODEL_IDENTITY:
+        if isinstance(value, dict) and value.get("can20_model_identity") == FILE_MODEL_IDENTITY:
             return value
         elif isinstance(value, File):
             return value.to_dict()

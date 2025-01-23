@@ -34,7 +34,7 @@ class FileUploadConfig(BaseModel):
 
 
 class File(BaseModel):
-    dify_model_identity: str = FILE_MODEL_IDENTITY
+    can20_model_identity: str = FILE_MODEL_IDENTITY
 
     id: Optional[str] = None  # message file id
     tenant_id: str

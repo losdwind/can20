@@ -35,7 +35,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
 
   const { locale } = useContext(I18n)
   const { t } = useTranslation()
-  const { userProfile, langeniusVersionInfo } = useAppContext()
+  const { userProfile, chainainexusVersionInfo } = useAppContext()
   const { setShowAccountSettingModal } = useModalContext()
   const { plan } = useProviderContext()
   const canEmailSupport = plan.type === Plan.professional || plan.type === Plan.team || plan.type === Plan.enterprise
@@ -127,7 +127,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                         className={classNames(itemClassName, 'group justify-between',
                           active && 'bg-state-base-hover',
                         )}
-                        href={mailToSupport(userProfile.email, plan.type, langeniusVersionInfo.current_version)}
+                        href={mailToSupport(userProfile.email, plan.type, chainainexusVersionInfo.current_version)}
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.emailSupport')}</div>
                         <ArrowUpRight className='hidden w-[14px] h-[14px] text-text-tertiary group-hover:flex' />
@@ -138,7 +138,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                         className={classNames(itemClassName, 'group justify-between',
                           active && 'bg-state-base-hover',
                         )}
-                        href='https://github.com/langgenius/dify/discussions/categories/feedbacks'
+                        href='https://github.com/chainainexus/can20/discussions/categories/feedbacks'
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.communityFeedback')}</div>
                         <ArrowUpRight className='hidden w-[14px] h-[14px] text-text-tertiary group-hover:flex' />
@@ -161,7 +161,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                           active && 'bg-state-base-hover',
                         )}
                         href={
-                          locale !== LanguagesSupported[1] ? 'https://docs.dify.ai/' : `https://docs.dify.ai/v/${locale.toLowerCase()}/`
+                          locale !== LanguagesSupported[1] ? 'https://docs.can20.ai/' : `https://docs.can20.ai/v/${locale.toLowerCase()}/`
                         }
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.helpCenter')}</div>
@@ -173,7 +173,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                         className={classNames(itemClassName, 'group justify-between',
                           active && 'bg-state-base-hover',
                         )}
-                        href='https://roadmap.dify.ai'
+                        href='https://roadmap.can20.ai'
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.roadmap')}</div>
                         <ArrowUpRight className='hidden w-[14px] h-[14px] text-text-tertiary group-hover:flex' />
@@ -187,8 +187,8 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                           )} onClick={() => setAboutVisible(true)}>
                             <div>{t('common.userProfile.about')}</div>
                             <div className='flex items-center'>
-                              <div className='mr-2 system-xs-regular text-text-tertiary'>{langeniusVersionInfo.current_version}</div>
-                              <Indicator color={langeniusVersionInfo.current_version === langeniusVersionInfo.latest_version ? 'green' : 'orange'} />
+                              <div className='mr-2 system-xs-regular text-text-tertiary'>{chainainexusVersionInfo.current_version}</div>
+                              <Indicator color={chainainexusVersionInfo.current_version === chainainexusVersionInfo.latest_version ? 'green' : 'orange'} />
                             </div>
                           </div>}
                         </Menu.Item>
@@ -214,7 +214,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
         }
       </Menu>
       {
-        aboutVisible && <AccountAbout onCancel={() => setAboutVisible(false)} langeniusVersionInfo={langeniusVersionInfo} />
+        aboutVisible && <AccountAbout onCancel={() => setAboutVisible(false)} chainainexusVersionInfo={chainainexusVersionInfo} />
       }
     </div >
   )

@@ -7,7 +7,7 @@ from typing import Any
 from clickhouse_connect import get_client
 from pydantic import BaseModel
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -165,11 +165,11 @@ class MyScaleVectorFactory(AbstractVectorFactory):
         return MyScaleVector(
             collection_name=collection_name,
             config=MyScaleConfig(
-                host=dify_config.MYSCALE_HOST,
-                port=dify_config.MYSCALE_PORT,
-                user=dify_config.MYSCALE_USER,
-                password=dify_config.MYSCALE_PASSWORD,
-                database=dify_config.MYSCALE_DATABASE,
-                fts_params=dify_config.MYSCALE_FTS_PARAMS,
+                host=can20_config.MYSCALE_HOST,
+                port=can20_config.MYSCALE_PORT,
+                user=can20_config.MYSCALE_USER,
+                password=can20_config.MYSCALE_PASSWORD,
+                database=can20_config.MYSCALE_DATABASE,
+                fts_params=can20_config.MYSCALE_FTS_PARAMS,
             ),
         )

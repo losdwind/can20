@@ -30,7 +30,7 @@ class Document(BaseModel):
     """
     metadata: dict = {}
 
-    provider: Optional[str] = "dify"
+    provider: Optional[str] = "can20"
 
     children: Optional[list[ChildDocument]] = None
 

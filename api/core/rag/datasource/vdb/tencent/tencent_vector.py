@@ -7,7 +7,7 @@ from tcvectordb.model import document, enum  # type: ignore
 from tcvectordb.model import index as vdb_index  # type: ignore
 from tcvectordb.model.document import Filter  # type: ignore
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.vector_base import BaseVector
 from core.rag.datasource.vdb.vector_factory import AbstractVectorFactory
 from core.rag.datasource.vdb.vector_type import VectorType
@@ -106,7 +106,7 @@ class TencentVector(BaseVector):
                 name=self._collection_name,
                 shard=self._client_config.shard,
                 replicas=self._client_config.replicas,
-                description="Collection for Dify",
+                description="Collection for CAN20",
                 index=index,
             )
             redis_client.set(collection_exist_cache_key, 1, ex=3600)
@@ -195,12 +195,12 @@ class TencentVectorFactory(AbstractVectorFactory):
         return TencentVector(
             collection_name=collection_name,
             config=TencentConfig(
-                url=dify_config.TENCENT_VECTOR_DB_URL or "",
-                api_key=dify_config.TENCENT_VECTOR_DB_API_KEY,
-                timeout=dify_config.TENCENT_VECTOR_DB_TIMEOUT,
-                username=dify_config.TENCENT_VECTOR_DB_USERNAME,
-                database=dify_config.TENCENT_VECTOR_DB_DATABASE,
-                shard=dify_config.TENCENT_VECTOR_DB_SHARD,
-                replicas=dify_config.TENCENT_VECTOR_DB_REPLICAS,
+                url=can20_config.TENCENT_VECTOR_DB_URL or "",
+                api_key=can20_config.TENCENT_VECTOR_DB_API_KEY,
+                timeout=can20_config.TENCENT_VECTOR_DB_TIMEOUT,
+                username=can20_config.TENCENT_VECTOR_DB_USERNAME,
+                database=can20_config.TENCENT_VECTOR_DB_DATABASE,
+                shard=can20_config.TENCENT_VECTOR_DB_SHARD,
+                replicas=can20_config.TENCENT_VECTOR_DB_REPLICAS,
             ),
         )

@@ -9,7 +9,7 @@ class DeploymentConfig(BaseSettings):
 
     APPLICATION_NAME: str = Field(
         description="Name of the application, used for identification and logging purposes",
-        default="langgenius/dify",
+        default="chainainexus/can20",
     )
 
     DEBUG: bool = Field(

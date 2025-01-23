@@ -1,7 +1,7 @@
 import logging
 from typing import Optional, cast
 
-from configs import dify_config
+from configs import can20_config
 from core.app.apps.base_app_queue_manager import AppQueueManager
 from core.app.apps.workflow.app_config_manager import WorkflowAppConfig
 from core.app.apps.workflow_app_runner import WorkflowBasedAppRunner
@@ -70,7 +70,7 @@ class WorkflowAppRunner(WorkflowBasedAppRunner):
         db.session.close()
 
         workflow_callbacks: list[WorkflowCallback] = []
-        if dify_config.DEBUG:
+        if can20_config.DEBUG:
             workflow_callbacks.append(WorkflowLoggingCallback())
 
         # if only single iteration run is requested

@@ -1,7 +1,7 @@
 from collections.abc import Mapping, Sequence
 from typing import Any, Optional
 
-from configs import dify_config
+from configs import can20_config
 from core.helper.code_executor.code_executor import CodeExecutionError, CodeExecutor, CodeLanguage
 from core.helper.code_executor.code_node_provider import CodeNodeProvider
 from core.helper.code_executor.javascript.javascript_code_provider import JavascriptCodeProvider
@@ -79,10 +79,10 @@ class CodeNode(BaseNode[CodeNodeData]):
         if not isinstance(value, str):
             raise OutputValidationError(f"Output variable `{variable}` must be a string")
 
-        if len(value) > dify_config.CODE_MAX_STRING_LENGTH:
+        if len(value) > can20_config.CODE_MAX_STRING_LENGTH:
             raise OutputValidationError(
                 f"The length of output variable `{variable}` must be"
-                f" less than {dify_config.CODE_MAX_STRING_LENGTH} characters"
+                f" less than {can20_config.CODE_MAX_STRING_LENGTH} characters"
             )
 
         return value.replace("\x00", "")
@@ -99,18 +99,18 @@ class CodeNode(BaseNode[CodeNodeData]):
         if not isinstance(value, int | float):
             raise OutputValidationError(f"Output variable `{variable}` must be a number")
 
-        if value > dify_config.CODE_MAX_NUMBER or value < dify_config.CODE_MIN_NUMBER:
+        if value > can20_config.CODE_MAX_NUMBER or value < can20_config.CODE_MIN_NUMBER:
             raise OutputValidationError(
                 f"Output variable `{variable}` is out of range,"
-                f" it must be between {dify_config.CODE_MIN_NUMBER} and {dify_config.CODE_MAX_NUMBER}."
+                f" it must be between {can20_config.CODE_MIN_NUMBER} and {can20_config.CODE_MAX_NUMBER}."
             )
 
         if isinstance(value, float):
             # raise error if precision is too high
-            if len(str(value).split(".")[1]) > dify_config.CODE_MAX_PRECISION:
+            if len(str(value).split(".")[1]) > can20_config.CODE_MAX_PRECISION:
                 raise OutputValidationError(
                     f"Output variable `{variable}` has too high precision,"
-                    f" it must be less than {dify_config.CODE_MAX_PRECISION} digits."
+                    f" it must be less than {can20_config.CODE_MAX_PRECISION} digits."
                 )
 
         return value
@@ -122,8 +122,8 @@ class CodeNode(BaseNode[CodeNodeData]):
         prefix: str = "",
         depth: int = 1,
     ):
-        if depth > dify_config.CODE_MAX_DEPTH:
-            raise DepthLimitError(f"Depth limit ${dify_config.CODE_MAX_DEPTH} reached, object too deep.")
+        if depth > can20_config.CODE_MAX_DEPTH:
+            raise DepthLimitError(f"Depth limit ${can20_config.CODE_MAX_DEPTH} reached, object too deep.")
 
         transformed_result: dict[str, Any] = {}
         if output_schema is None:
@@ -231,10 +231,10 @@ class CodeNode(BaseNode[CodeNodeData]):
                             f" got {type(result.get(output_name))} instead."
                         )
                 else:
-                    if len(result[output_name]) > dify_config.CODE_MAX_NUMBER_ARRAY_LENGTH:
+                    if len(result[output_name]) > can20_config.CODE_MAX_NUMBER_ARRAY_LENGTH:
                         raise OutputValidationError(
                             f"The length of output variable `{prefix}{dot}{output_name}` must be"
-                            f" less than {dify_config.CODE_MAX_NUMBER_ARRAY_LENGTH} elements."
+                            f" less than {can20_config.CODE_MAX_NUMBER_ARRAY_LENGTH} elements."
                         )
 
                     transformed_result[output_name] = [
@@ -252,10 +252,10 @@ class CodeNode(BaseNode[CodeNodeData]):
                             f" got {type(result.get(output_name))} instead."
                         )
                 else:
-                    if len(result[output_name]) > dify_config.CODE_MAX_STRING_ARRAY_LENGTH:
+                    if len(result[output_name]) > can20_config.CODE_MAX_STRING_ARRAY_LENGTH:
                         raise OutputValidationError(
                             f"The length of output variable `{prefix}{dot}{output_name}` must be"
-                            f" less than {dify_config.CODE_MAX_STRING_ARRAY_LENGTH} elements."
+                            f" less than {can20_config.CODE_MAX_STRING_ARRAY_LENGTH} elements."
                         )
 
                     transformed_result[output_name] = [
@@ -273,10 +273,10 @@ class CodeNode(BaseNode[CodeNodeData]):
                             f" got {type(result.get(output_name))} instead."
                         )
                 else:
-                    if len(result[output_name]) > dify_config.CODE_MAX_OBJECT_ARRAY_LENGTH:
+                    if len(result[output_name]) > can20_config.CODE_MAX_OBJECT_ARRAY_LENGTH:
                         raise OutputValidationError(
                             f"The length of output variable `{prefix}{dot}{output_name}` must be"
-                            f" less than {dify_config.CODE_MAX_OBJECT_ARRAY_LENGTH} elements."
+                            f" less than {can20_config.CODE_MAX_OBJECT_ARRAY_LENGTH} elements."
                         )
 
                     for i, value in enumerate(result[output_name]):

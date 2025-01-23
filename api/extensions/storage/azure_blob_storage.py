@@ -3,7 +3,7 @@ from datetime import UTC, datetime, timedelta
 
 from azure.storage.blob import AccountSasPermissions, BlobServiceClient, ResourceTypes, generate_account_sas
 
-from configs import dify_config
+from configs import can20_config
 from extensions.ext_redis import redis_client
 from extensions.storage.base_storage import BaseStorage
 
@@ -13,10 +13,10 @@ class AzureBlobStorage(BaseStorage):
 
     def __init__(self):
         super().__init__()
-        self.bucket_name = dify_config.AZURE_BLOB_CONTAINER_NAME
-        self.account_url = dify_config.AZURE_BLOB_ACCOUNT_URL
-        self.account_name = dify_config.AZURE_BLOB_ACCOUNT_NAME
-        self.account_key = dify_config.AZURE_BLOB_ACCOUNT_KEY
+        self.bucket_name = can20_config.AZURE_BLOB_CONTAINER_NAME
+        self.account_url = can20_config.AZURE_BLOB_ACCOUNT_URL
+        self.account_name = can20_config.AZURE_BLOB_ACCOUNT_NAME
+        self.account_key = can20_config.AZURE_BLOB_ACCOUNT_KEY
 
     def save(self, filename, data):
         client = self._sync_client()

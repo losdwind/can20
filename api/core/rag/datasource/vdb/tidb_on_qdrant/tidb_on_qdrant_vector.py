@@ -21,7 +21,7 @@ from qdrant_client.http.models import (
 from qdrant_client.local.qdrant_local import QdrantLocal
 from requests.auth import HTTPDigestAuth
 
-from configs import dify_config
+from configs import can20_config
 from core.rag.datasource.vdb.field import Field
 from core.rag.datasource.vdb.tidb_on_qdrant.tidb_service import TidbService
 from core.rag.datasource.vdb.vector_base import BaseVector
@@ -432,12 +432,12 @@ class TidbOnQdrantVectorFactory(AbstractVectorFactory):
                         TIDB_ON_QDRANT_API_KEY = f"{idle_tidb_auth_binding.account}:{idle_tidb_auth_binding.password}"
                     else:
                         new_cluster = TidbService.create_tidb_serverless_cluster(
-                            dify_config.TIDB_PROJECT_ID or "",
-                            dify_config.TIDB_API_URL or "",
-                            dify_config.TIDB_IAM_API_URL or "",
-                            dify_config.TIDB_PUBLIC_KEY or "",
-                            dify_config.TIDB_PRIVATE_KEY or "",
-                            dify_config.TIDB_REGION or "",
+                            can20_config.TIDB_PROJECT_ID or "",
+                            can20_config.TIDB_API_URL or "",
+                            can20_config.TIDB_IAM_API_URL or "",
+                            can20_config.TIDB_PUBLIC_KEY or "",
+                            can20_config.TIDB_PRIVATE_KEY or "",
+                            can20_config.TIDB_REGION or "",
                         )
                         new_tidb_auth_binding = TidbAuthBinding(
                             cluster_id=new_cluster["cluster_id"],
@@ -468,12 +468,12 @@ class TidbOnQdrantVectorFactory(AbstractVectorFactory):
             collection_name=collection_name,
             group_id=dataset.id,
             config=TidbOnQdrantConfig(
-                endpoint=dify_config.TIDB_ON_QDRANT_URL or "",
+                endpoint=can20_config.TIDB_ON_QDRANT_URL or "",
                 api_key=TIDB_ON_QDRANT_API_KEY,
                 root_path=str(config.root_path),
-                timeout=dify_config.TIDB_ON_QDRANT_CLIENT_TIMEOUT,
-                grpc_port=dify_config.TIDB_ON_QDRANT_GRPC_PORT,
-                prefer_grpc=dify_config.TIDB_ON_QDRANT_GRPC_ENABLED,
+                timeout=can20_config.TIDB_ON_QDRANT_CLIENT_TIMEOUT,
+                grpc_port=can20_config.TIDB_ON_QDRANT_GRPC_PORT,
+                prefer_grpc=can20_config.TIDB_ON_QDRANT_GRPC_ENABLED,
             ),
         )
 

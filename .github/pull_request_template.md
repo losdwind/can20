@@ -17,7 +17,7 @@ Please include a summary of the change and which issue is fixed. Please also inc
 > [!IMPORTANT]  
 > Please review the checklist below before submitting your pull request.
 
-- [ ] This change requires a documentation update, included: [Dify Document](https://github.com/langgenius/dify-docs)
+- [ ] This change requires a documentation update, included: [CAN20 Document](https://github.com/chainainexus/can20-docs)
 - [x] I understand that this PR may be closed in case there was no previous discussion or issues. (This doesn't apply to typos!)
 - [x] I've added a test for each change that was introduced, and I tried as much as possible to make a single atomic change.
 - [x] I've updated the documentation accordingly.

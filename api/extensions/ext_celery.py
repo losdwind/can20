@@ -4,11 +4,11 @@ import pytz
 from celery import Celery, Task  # type: ignore
 from celery.schedules import crontab  # type: ignore
 
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
-def init_app(app: DifyApp) -> Celery:
+def init_app(app: CAN20App) -> Celery:
     class FlaskTask(Task):
         def __call__(self, *args: object, **kwargs: object) -> object:
             with app.app_context():
@@ -16,19 +16,19 @@ def init_app(app: DifyApp) -> Celery:
 
     broker_transport_options = {}
 
-    if dify_config.CELERY_USE_SENTINEL:
+    if can20_config.CELERY_USE_SENTINEL:
         broker_transport_options = {
-            "master_name": dify_config.CELERY_SENTINEL_MASTER_NAME,
+            "master_name": can20_config.CELERY_SENTINEL_MASTER_NAME,
             "sentinel_kwargs": {
-                "socket_timeout": dify_config.CELERY_SENTINEL_SOCKET_TIMEOUT,
+                "socket_timeout": can20_config.CELERY_SENTINEL_SOCKET_TIMEOUT,
             },
         }
 
     celery_app = Celery(
         app.name,
         task_cls=FlaskTask,
-        broker=dify_config.CELERY_BROKER_URL,
-        backend=dify_config.CELERY_BACKEND,
+        broker=can20_config.CELERY_BROKER_URL,
+        backend=can20_config.CELERY_BACKEND,
         task_ignore_result=True,
     )
 
@@ -41,23 +41,23 @@ def init_app(app: DifyApp) -> Celery:
     }
 
     celery_app.conf.update(
-        result_backend=dify_config.CELERY_RESULT_BACKEND,
+        result_backend=can20_config.CELERY_RESULT_BACKEND,
         broker_transport_options=broker_transport_options,
         broker_connection_retry_on_startup=True,
-        worker_log_format=dify_config.LOG_FORMAT,
-        worker_task_log_format=dify_config.LOG_FORMAT,
+        worker_log_format=can20_config.LOG_FORMAT,
+        worker_task_log_format=can20_config.LOG_FORMAT,
         worker_hijack_root_logger=False,
-        timezone=pytz.timezone(dify_config.LOG_TZ or "UTC"),
+        timezone=pytz.timezone(can20_config.LOG_TZ or "UTC"),
     )
 
-    if dify_config.BROKER_USE_SSL:
+    if can20_config.BROKER_USE_SSL:
         celery_app.conf.update(
             broker_use_ssl=ssl_options,  # Add the SSL options to the broker configuration
         )
 
-    if dify_config.LOG_FILE:
+    if can20_config.LOG_FILE:
         celery_app.conf.update(
-            worker_logfile=dify_config.LOG_FILE,
+            worker_logfile=can20_config.LOG_FILE,
         )
 
     celery_app.set_default()
@@ -71,7 +71,7 @@ def init_app(app: DifyApp) -> Celery:
         "schedule.clean_messages",
         "schedule.mail_clean_document_notify_task",
     ]
-    day = dify_config.CELERY_BEAT_SCHEDULER_TIME
+    day = can20_config.CELERY_BEAT_SCHEDULER_TIME
     beat_schedule = {
         "clean_embedding_cache_task": {
             "task": "schedule.clean_embedding_cache_task.clean_embedding_cache_task",

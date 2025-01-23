@@ -3,7 +3,7 @@
 import uuid
 from typing import Optional
 
-from configs import dify_config
+from configs import can20_config
 from core.model_manager import ModelInstance
 from core.rag.cleaner.clean_processor import CleanProcessor
 from core.rag.datasource.retrieval_service import RetrievalService
@@ -82,8 +82,8 @@ class ParentChildIndexProcessor(BaseIndexProcessor):
                 document, rules, process_rule.get("mode"), kwargs.get("embedding_model_instance")
             )
             if kwargs.get("preview"):
-                if len(child_nodes) > dify_config.CHILD_CHUNKS_PREVIEW_NUMBER:
-                    child_nodes = child_nodes[: dify_config.CHILD_CHUNKS_PREVIEW_NUMBER]
+                if len(child_nodes) > can20_config.CHILD_CHUNKS_PREVIEW_NUMBER:
+                    child_nodes = child_nodes[: can20_config.CHILD_CHUNKS_PREVIEW_NUMBER]
 
             document.children = child_nodes
             doc_id = str(uuid.uuid4())

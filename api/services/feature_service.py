@@ -2,7 +2,7 @@ from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict
 
-from configs import dify_config
+from configs import can20_config
 from services.billing_service import BillingService
 from services.enterprise.enterprise_service import EnterpriseService
 
@@ -74,7 +74,7 @@ class FeatureService:
 
         cls._fulfill_params_from_env(features)
 
-        if dify_config.BILLING_ENABLED and tenant_id:
+        if can20_config.BILLING_ENABLED and tenant_id:
             cls._fulfill_params_from_billing_api(features, tenant_id)
 
         return features
@@ -85,7 +85,7 @@ class FeatureService:
 
         cls._fulfill_system_params_from_env(system_features)
 
-        if dify_config.ENTERPRISE_ENABLED:
+        if can20_config.ENTERPRISE_ENABLED:
             system_features.enable_web_sso_switch_component = True
 
             cls._fulfill_params_from_enterprise(system_features)
@@ -94,18 +94,18 @@ class FeatureService:
 
     @classmethod
     def _fulfill_system_params_from_env(cls, system_features: SystemFeatureModel):
-        system_features.enable_email_code_login = dify_config.ENABLE_EMAIL_CODE_LOGIN
-        system_features.enable_email_password_login = dify_config.ENABLE_EMAIL_PASSWORD_LOGIN
-        system_features.enable_social_oauth_login = dify_config.ENABLE_SOCIAL_OAUTH_LOGIN
-        system_features.is_allow_register = dify_config.ALLOW_REGISTER
-        system_features.is_allow_create_workspace = dify_config.ALLOW_CREATE_WORKSPACE
-        system_features.is_email_setup = dify_config.MAIL_TYPE is not None and dify_config.MAIL_TYPE != ""
+        system_features.enable_email_code_login = can20_config.ENABLE_EMAIL_CODE_LOGIN
+        system_features.enable_email_password_login = can20_config.ENABLE_EMAIL_PASSWORD_LOGIN
+        system_features.enable_social_oauth_login = can20_config.ENABLE_SOCIAL_OAUTH_LOGIN
+        system_features.is_allow_register = can20_config.ALLOW_REGISTER
+        system_features.is_allow_create_workspace = can20_config.ALLOW_CREATE_WORKSPACE
+        system_features.is_email_setup = can20_config.MAIL_TYPE is not None and can20_config.MAIL_TYPE != ""
 
     @classmethod
     def _fulfill_params_from_env(cls, features: FeatureModel):
-        features.can_replace_logo = dify_config.CAN_REPLACE_LOGO
-        features.model_load_balancing_enabled = dify_config.MODEL_LB_ENABLED
-        features.dataset_operator_enabled = dify_config.DATASET_OPERATOR_ENABLED
+        features.can_replace_logo = can20_config.CAN_REPLACE_LOGO
+        features.model_load_balancing_enabled = can20_config.MODEL_LB_ENABLED
+        features.dataset_operator_enabled = can20_config.DATASET_OPERATOR_ENABLED
 
     @classmethod
     def _fulfill_params_from_billing_api(cls, features: FeatureModel, tenant_id: str):

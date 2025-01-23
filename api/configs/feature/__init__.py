@@ -75,7 +75,7 @@ class CodeExecutionSandboxConfig(BaseSettings):
 
     CODE_EXECUTION_API_KEY: str = Field(
         description="API key for accessing the code execution service",
-        default="dify-sandbox",
+        default="can20-sandbox",
     )
 
     CODE_EXECUTION_CONNECT_TIMEOUT: Optional[float] = Field(
@@ -407,7 +407,7 @@ class UpdateConfig(BaseSettings):
 
     CHECK_UPDATE_URL: str = Field(
         description="URL to check for application updates",
-        default="https://updates.dify.ai",
+        default="https://updates.can20.ai",
     )
 
 
@@ -589,8 +589,8 @@ class RagEtlConfig(BaseSettings):
 
     # TODO: This config is not only for rag etl, it is also for file upload, we should move it to file upload config
     ETL_TYPE: str = Field(
-        description="RAG ETL type ('dify' or 'Unstructured'), default to 'dify'",
-        default="dify",
+        description="RAG ETL type ('can20' or 'Unstructured'), default to 'can20'",
+        default="can20",
     )
 
     KEYWORD_DATA_SOURCE_TYPE: str = Field(

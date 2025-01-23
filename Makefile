@@ -1,7 +1,7 @@
 # Variables
-DOCKER_REGISTRY=langgenius
-WEB_IMAGE=$(DOCKER_REGISTRY)/dify-web
-API_IMAGE=$(DOCKER_REGISTRY)/dify-api
+DOCKER_REGISTRY=chainainexus
+WEB_IMAGE=$(DOCKER_REGISTRY)/can20-web
+API_IMAGE=$(DOCKER_REGISTRY)/can20-api
 VERSION=latest
 
 # Build Docker images

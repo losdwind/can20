@@ -5,8 +5,8 @@ from redis.cluster import ClusterNode, RedisCluster
 from redis.connection import Connection, SSLConnection
 from redis.sentinel import Sentinel
 
-from configs import dify_config
-from dify_app import DifyApp
+from configs import can20_config
+from can20_app import CAN20App
 
 
 class RedisClientWrapper:
@@ -46,49 +46,49 @@ class RedisClientWrapper:
 redis_client = RedisClientWrapper()
 
 
-def init_app(app: DifyApp):
+def init_app(app: CAN20App):
     global redis_client
     connection_class: type[Union[Connection, SSLConnection]] = Connection
-    if dify_config.REDIS_USE_SSL:
+    if can20_config.REDIS_USE_SSL:
         connection_class = SSLConnection
 
     redis_params: dict[str, Any] = {
-        "username": dify_config.REDIS_USERNAME,
-        "password": dify_config.REDIS_PASSWORD,
-        "db": dify_config.REDIS_DB,
+        "username": can20_config.REDIS_USERNAME,
+        "password": can20_config.REDIS_PASSWORD,
+        "db": can20_config.REDIS_DB,
         "encoding": "utf-8",
         "encoding_errors": "strict",
         "decode_responses": False,
     }
 
-    if dify_config.REDIS_USE_SENTINEL:
-        assert dify_config.REDIS_SENTINELS is not None, "REDIS_SENTINELS must be set when REDIS_USE_SENTINEL is True"
+    if can20_config.REDIS_USE_SENTINEL:
+        assert can20_config.REDIS_SENTINELS is not None, "REDIS_SENTINELS must be set when REDIS_USE_SENTINEL is True"
         sentinel_hosts = [
-            (node.split(":")[0], int(node.split(":")[1])) for node in dify_config.REDIS_SENTINELS.split(",")
+            (node.split(":")[0], int(node.split(":")[1])) for node in can20_config.REDIS_SENTINELS.split(",")
         ]
         sentinel = Sentinel(
             sentinel_hosts,
             sentinel_kwargs={
-                "socket_timeout": dify_config.REDIS_SENTINEL_SOCKET_TIMEOUT,
-                "username": dify_config.REDIS_SENTINEL_USERNAME,
-                "password": dify_config.REDIS_SENTINEL_PASSWORD,
+                "socket_timeout": can20_config.REDIS_SENTINEL_SOCKET_TIMEOUT,
+                "username": can20_config.REDIS_SENTINEL_USERNAME,
+                "password": can20_config.REDIS_SENTINEL_PASSWORD,
             },
         )
-        master = sentinel.master_for(dify_config.REDIS_SENTINEL_SERVICE_NAME, **redis_params)
+        master = sentinel.master_for(can20_config.REDIS_SENTINEL_SERVICE_NAME, **redis_params)
         redis_client.initialize(master)
-    elif dify_config.REDIS_USE_CLUSTERS:
-        assert dify_config.REDIS_CLUSTERS is not None, "REDIS_CLUSTERS must be set when REDIS_USE_CLUSTERS is True"
+    elif can20_config.REDIS_USE_CLUSTERS:
+        assert can20_config.REDIS_CLUSTERS is not None, "REDIS_CLUSTERS must be set when REDIS_USE_CLUSTERS is True"
         nodes = [
             ClusterNode(host=node.split(":")[0], port=int(node.split(":")[1]))
-            for node in dify_config.REDIS_CLUSTERS.split(",")
+            for node in can20_config.REDIS_CLUSTERS.split(",")
         ]
         # FIXME: mypy error here, try to figure out how to fix it
-        redis_client.initialize(RedisCluster(startup_nodes=nodes, password=dify_config.REDIS_CLUSTERS_PASSWORD))  # type: ignore
+        redis_client.initialize(RedisCluster(startup_nodes=nodes, password=can20_config.REDIS_CLUSTERS_PASSWORD))  # type: ignore
     else:
         redis_params.update(
             {
-                "host": dify_config.REDIS_HOST,
-                "port": dify_config.REDIS_PORT,
+                "host": can20_config.REDIS_HOST,
+                "port": can20_config.REDIS_PORT,
                 "connection_class": connection_class,
             }
         )
