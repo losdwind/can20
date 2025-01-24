@@ -4,8 +4,8 @@ from typing import Literal, Union, overload
 
 from flask import Flask
 
-from configs import can20_config
 from can20_app import CAN20App
+from configs import can20_config
 from extensions.storage.base_storage import BaseStorage
 from extensions.storage.storage_type import StorageType
 

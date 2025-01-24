@@ -83,23 +83,24 @@ const InstallForm = () => {
       ? <Loading />
       : <>
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="text-[32px] font-bold text-gray-900">{t('login.setAdminAccount')}</h2>
+          <h2 className="text-[32px] font-bold text-text-primary">{t('login.setAdminAccount')}</h2>
           <p className='
-          mt-1 text-sm text-gray-600
+          mt-1 text-sm text-text-secondary
         '>{t('login.setAdminAccountDesc')}</p>
         </div>
         <div className="grow mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white ">
+          <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-5'>
-                <label htmlFor="email" className="my-2 flex items-center justify-between text-sm font-medium text-gray-900">
+                <label htmlFor="email" className="my-2 flex items-center justify-between text-sm font-medium text-text-secondary
+                ">
                   {t('login.email')}
                 </label>
                 <div className="mt-1">
                   <input
                     {...register('email')}
                     placeholder={t('login.emailPlaceholder') || ''}
-                    className={'appearance-none block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 placeholder-gray-400 caret-primary-600 sm:text-sm'}
+                    className={'appearance-none text-text-primary block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-components-input-border-active-prompt-1 focus:border-components-input-border-active-prompt-1 placeholder-gray-400 caret-white sm:text-sm'}
                   />
                   {errors.email && <span className='text-red-400 text-sm'>{t(`${errors.email?.message}`)}</span>}
                 </div>
@@ -107,21 +108,21 @@ const InstallForm = () => {
               </div>
 
               <div className='mb-5'>
-                <label htmlFor="name" className="my-2 flex items-center justify-between text-sm font-medium text-gray-900">
+                <label htmlFor="name" className="my-2 flex items-center justify-between text-sm font-medium text-text-secondary">
                   {t('login.name')}
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <input
                     {...register('name')}
                     placeholder={t('login.namePlaceholder') || ''}
-                    className={'appearance-none block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 placeholder-gray-400 caret-primary-600 sm:text-sm pr-10'}
+                    className={'appearance-none text-text-primary block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-components-input-border-active-prompt-1 focus:border-components-input-border-active-prompt-1 placeholder-gray-400 caret-white sm:text-sm pr-10'}
                   />
                 </div>
                 {errors.name && <span className='text-red-400 text-sm'>{t(`${errors.name.message}`)}</span>}
               </div>
 
               <div className='mb-5'>
-                <label htmlFor="password" className="my-2 flex items-center justify-between text-sm font-medium text-gray-900">
+                <label htmlFor="password" className="my-2 flex items-center justify-between text-sm font-medium text-text-secondary">
                   {t('login.password')}
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
@@ -129,7 +130,7 @@ const InstallForm = () => {
                     {...register('password')}
                     type={showPassword ? 'text' : 'password'}
                     placeholder={t('login.passwordPlaceholder') || ''}
-                    className={'appearance-none block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 placeholder-gray-400 caret-primary-600 sm:text-sm pr-10'}
+                    className={'appearance-none text-text-primary block w-full rounded-lg pl-[14px] px-3 py-2 border border-gray-200 hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-components-input-border-active-prompt-1 focus:border-components-input-border-active-prompt-1 placeholder-gray-400 caret-white sm:text-sm pr-10'}
                   />
 
                   <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -158,7 +159,7 @@ const InstallForm = () => {
               {t('login.license.tip')}
               &nbsp;
               <Link
-                className='text-primary-600'
+                className='underline text-components-button-ghost-text'
                 target='_blank' rel='noopener noreferrer'
                 href={'https://docs.can20.ai/user-agreement/open-source'}
               >{t('login.license.link')}</Link>

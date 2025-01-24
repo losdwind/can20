@@ -35,156 +35,92 @@
         <img alt="Discussion posts" src="https://img.shields.io/github/discussions/chainainexus/can20?labelColor=%20%239b8afb&color=%20%237a5af8"></a>
 </p>
 
-<p align="center">
-  <a href="./README.md"><img alt="README in English" src="https://img.shields.io/badge/English-d9d9d9"></a>
-  <a href="./README_CN.md"><img alt="简体中文版自述文件" src="https://img.shields.io/badge/简体中文-d9d9d9"></a>
-  <a href="./README_JA.md"><img alt="日本語のREADME" src="https://img.shields.io/badge/日本語-d9d9d9"></a>
-  <a href="./README_ES.md"><img alt="README en Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
-  <a href="./README_FR.md"><img alt="README en Français" src="https://img.shields.io/badge/Français-d9d9d9"></a>
-  <a href="./README_KL.md"><img alt="README tlhIngan Hol" src="https://img.shields.io/badge/Klingon-d9d9d9"></a>
-  <a href="./README_KR.md"><img alt="README in Korean" src="https://img.shields.io/badge/한국어-d9d9d9"></a>
-  <a href="./README_AR.md"><img alt="README بالعربية" src="https://img.shields.io/badge/العربية-d9d9d9"></a>
-  <a href="./README_TR.md"><img alt="Türkçe README" src="https://img.shields.io/badge/Türkçe-d9d9d9"></a>
-  <a href="./README_VI.md"><img alt="README Tiếng Việt" src="https://img.shields.io/badge/Ti%E1%BA%BFng%20Vi%E1%BB%87t-d9d9d9"></a>
-</p>
+# ChainAINexus (CAN)
 
+**A Modular AI + Web3 Architecture for the Next Generation Intent-Centric Platform**
 
-CAN20 is an open-source LLM app development platform. Its intuitive interface combines agentic AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production. 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+## Overview
 
-## Quick start
-> Before installing CAN20, make sure your machine meets the following minimum system requirements:
-> 
->- CPU >= 2 Core
->- RAM >= 4 GiB
+ChainAINexus (CAN) is a revolutionary, modular, and extensible Web3-based platform designed to empower users to effortlessly build complex workflows through a plug-in architecture. It acts as an **Intent-Centric** hub, allowing users to express their needs and have the platform intelligently assemble the necessary tools to fulfill them.
 
-</br>
+Instead of developing monolithic applications, developers can focus on creating single-functionality plugins, significantly lowering the barrier to entry and fostering a vibrant ecosystem. Users, even without coding experience, can then leverage the intuitive **Plugin Canvas** to visually arrange and combine these plugins, creating custom solutions tailored to their specific requirements.
 
-The easiest way to start the CAN20 server is through [docker compose](docker/docker-compose.yaml). Before running CAN20 with the following commands, make sure that [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine:
+The modularity of CAN not only accelerates development but also unlocks unprecedented flexibility. Plugins can freely interact and be combined in countless ways, allowing the platform to adapt to a vast spectrum of use cases. As the plugin ecosystem grows, so does the potential for innovation, fueled by the exponentially increasing possibilities of plugin combinations. Furthermore, CAN leverages these user-created workflows to train its AI models, progressively enhancing its automation capabilities and eventually enabling the system to intelligently suggest and even automatically generate plugin combinations based on user intent.
 
-```bash
-cd can20
-cd docker
-cp .env.example .env
-docker compose up -d
-```
+## System Architecture
 
-After running, you can access the CAN20 dashboard in your browser at [http://localhost/install](http://localhost/install) and start the initialization process.
+The architecture is divided into three main layers:
 
-#### Seeking help
-Please refer to our [FAQ](https://docs.can20.ai/getting-started/install-self-hosted/faqs) if you encounter problems setting up CAN20. Reach out to [the community and us](#community--contact) if you are still having issues.
+**1. User Layer:**
 
-> If you'd like to contribute to CAN20 or do additional development, refer to our [guide to deploying from source code](https://docs.can20.ai/getting-started/install-self-hosted/local-source-code)
+*   **User Interaction:**  Google Chrome Extension, Dapp, Web Interface, Natural Language Interface
+*   **Identity Management:** User Identity, Single-Sign Wallet, Multi-Sign Wallet, DID
 
-## Key features
-**1. Workflow**: 
-  Build and test powerful AI workflows on a visual canvas, leveraging all the following features and beyond.
+**2. Application Layer:**
 
+*   **AI Services:** Intention Recognition, Sentiment Analysis, Natural Language Generation
+*   **Transaction Tools:** Smart Contract Audit, Content Recommendation, Wallet Tracking, Asset Issuance
+*   **Data Processing:** On-Chain Data Analysis, Off-Chain Data Analysis, Prediction Analysis, Multimodal Data Processing
 
-  https://github.com/chainainexus/can20/assets/13230914/356df23e-1604-483d-80a6-9517ece318aa
+**3. CAN Core:**
 
+*   **Plugin Canvas:** Modular Combination, Logic Control, Data Flow Management, Permission Management, Security Check
+*   **Plugin Store:** Upload & Review, Community Ecosystem, Search & Recommendation, Payment Management, Rating System
+*   **Plugin Library:** Plugin Management, Storage & Distribution, Developer Support, Plugin Orchestration Library
+*   **Contract Library:** Governance Contract, Staking Contract, Revenue Sharing Contract, CAN PROTOCOL, Algorithm Library (NLP, Diffusion Models, TGAN, TTS)
 
+**Visual Representation:**
+![CAN Architecture Diagram](https://i.imgur.com/8j7lD9p.png)
 
-**2. Comprehensive model support**: 
-  Seamless integration with hundreds of proprietary / open-source LLMs from dozens of inference providers and self-hosted solutions, covering GPT, Mistral, Llama3, and any OpenAI API-compatible models. A full list of supported model providers can be found [here](https://docs.can20.ai/getting-started/readme/model-providers).
+## Key Features
 
-![providers-v5](https://github.com/chainainexus/can20/assets/13230914/5a17bdbe-097a-4100-8363-40255b70f6e3)
+*   **Modular Plugin System:**
+    *   Developers can focus on building single-function, PMF-driven plugins.
+    *   Plugins can interact and be combined freely, enabling complex workflow creation.
+    *   Users can visually assemble workflows through a drag-and-drop interface (Plugin Canvas).
 
+*   **Thriving Plugin Ecosystem & AI-Powered Automation:**
+    *   A dedicated **Plugin Store** facilitates plugin discovery, distribution, and monetization for developers.
+    *   CAN leverages user-created workflows to train AI models, enabling intelligent intent recognition and automated plugin combination recommendations.
 
-**3. Prompt IDE**: 
-  Intuitive interface for crafting prompts, comparing model performance, and adding additional features such as text-to-speech to a chat-based app. 
+*   **Seamless Integration of Web3 and AI:**
+    *   Comprehensive support for on-chain and off-chain data analysis, smart contract tools, asset management, and predictive analytics.
+    *   The modular architecture bridges the gap between Web3 projects and cutting-edge AI technologies, fostering the development of next-generation decentralized applications.
 
-**4. RAG Pipeline**: 
-  Extensive RAG capabilities that cover everything from document ingestion to retrieval, with out-of-box support for text extraction from PDFs, PPTs, and other common document formats.
+## Technology Stack
 
-**5. Agent capabilities**: 
-  You can define agents based on LLM Function Calling or ReAct, and add pre-built or custom tools for the agent. CAN20 provides 50+ built-in tools for AI agents, such as Google Search, DALL·E, Stable Diffusion and WolframAlpha.
+CAN utilizes a robust and versatile technology stack:
 
-**6. LLMOps**: 
-  Monitor and analyze application logs and performance over time. You could continuously improve prompts, datasets, and models based on production data and annotations.
+*   **Smart Contract Development:** Solidity
+*   **Artificial Intelligence:** Python (TensorFlow, PyTorch)
+*   **Frontend:** React.js / Next.js
+*   **Backend:** Node.js / Express.js
+*   **Database:** MongoDB / PostgreSQL
+*   **Blockchain Interaction:** Web3.js / ethers.js
+*   **Containerization:** Docker
 
-**7. Backend-as-a-Service**: 
-  All of CAN20's offerings come with corresponding APIs, so you could effortlessly integrate CAN20 into your own business logic.
+## Getting Started
 
-
-## Using CAN20
-
-- **Cloud </br>**
-We host a [CAN20 Cloud](https://can20.ai) service for anyone to try with zero setup. It provides all the capabilities of the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan.
-
-- **Self-hosting CAN20 Community Edition</br>**
-Quickly get CAN20 running in your environment with this [starter guide](#quick-start).
-Use our [documentation](https://docs.can20.ai) for further references and more in-depth instructions.
-
-- **CAN20 for enterprise / organizations</br>**
-We provide additional enterprise-centric features. [Log your questions for us through this chatbot](https://ucan20.app/chat/22L1zSxg6yW1cWQg) or [send us an email](mailto:business@can20.ai?subject=[GitHub]Business%20License%20Inquiry) to discuss enterprise needs. </br>
-  > For startups and small businesses using AWS, check out [CAN20 Premium on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-t22mebxzwjhu6) and deploy it to your own AWS VPC with one-click. It's an affordable AMI offering with the option to create apps with custom logo and branding.
-
-
-## Staying ahead
-
-Star CAN20 on GitHub and be instantly notified of new releases.
-
-![star-us](https://github.com/chainainexus/can20/assets/13230914/b823edc1-6388-4e25-ad45-2f6b187adbb4)
-
-
-## Advanced Setup
-
-If you need to customize the configuration, please refer to the comments in our [.env.example](docker/.env.example) file and update the corresponding values in your `.env` file. Additionally, you might need to make adjustments to the `docker-compose.yaml` file itself, such as changing image versions, port mappings, or volume mounts, based on your specific deployment environment and requirements. After making any changes, please re-run `docker-compose up -d`. You can find the full list of available environment variables [here](https://docs.can20.ai/getting-started/install-self-hosted/environments).
-
-If you'd like to configure a highly-available setup, there are community-contributed [Helm Charts](https://helm.sh/) and YAML files which allow CAN20 to be deployed on Kubernetes.
-
-- [Helm Chart by @LeoQuote](https://github.com/douban/charts/tree/master/charts/can20)
-- [Helm Chart by @BorisPolonsky](https://github.com/BorisPolonsky/can20-helm)
-- [YAML file by @Winson-030](https://github.com/Winson-030/can20-kubernetes)
-
-#### Using Terraform for Deployment
-
-Deploy CAN20 to Cloud Platform with a single click using [terraform](https://www.terraform.io/)
-
-##### Azure Global
-- [Azure Terraform by @nikawang](https://github.com/nikawang/can20-azure-terraform)
-
-##### Google Cloud
-- [Google Cloud Terraform by @sotazum](https://github.com/DeNA/can20-google-cloud-terraform)
-
-#### Using AWS CDK for Deployment
-
-Deploy CAN20 to AWS with [CDK](https://aws.amazon.com/cdk/)
-
-##### AWS 
-- [AWS CDK by @KevinZhao](https://github.com/aws-samples/solution-for-deploying-can20-on-aws)
+*   **Developers:**
+    *   Refer to the [Developer Documentation](docs/developer_guide.md) (coming soon) to learn how to build and deploy plugins.
+    *   Explore the [Plugin API Reference](docs/api_reference.md) (coming soon).
+*   **Users:**
+    *   Visit the [CAN Website](link-to-website) (coming soon) to access the Plugin Canvas and start building your workflows.
+    *   Browse the [Plugin Store](link-to-plugin-store) (coming soon) to discover available plugins.
 
 ## Contributing
 
-For those who'd like to contribute code, see our [Contribution Guide](https://github.com/chainainexus/can20/blob/main/CONTRIBUTING.md). 
-At the same time, please consider supporting CAN20 by sharing it on social media and at events and conferences.
-
-
-> We are looking for contributors to help with translating CAN20 to languages other than Mandarin or English. If you are interested in helping, please see the [i18n README](https://github.com/chainainexus/can20/blob/main/web/i18n/README.md) for more information, and leave us a comment in the `global-users` channel of our [Discord Community Server](https://discord.gg/8Tpq4AcN9c).
-
-## Community & contact
-
-* [Github Discussion](https://github.com/chainainexus/can20/discussions). Best for: sharing feedback and asking questions.
-* [GitHub Issues](https://github.com/chainainexus/can20/issues). Best for: bugs you encounter using CAN20.AI, and feature proposals. See our [Contribution Guide](https://github.com/chainainexus/can20/blob/main/CONTRIBUTING.md).
-* [Discord](https://discord.gg/FngNHpbcY7). Best for: sharing your applications and hanging out with the community.
-* [X(Twitter)](https://twitter.com/can20_ai). Best for: sharing your applications and hanging out with the community.
-
-**Contributors**
-
-<a href="https://github.com/chainainexus/can20/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=chainainexus/can20" />
-</a>
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=chainainexus/can20&type=Date)](https://star-history.com/#chainainexus/can20&Date)
-
-
-## Security disclosure
-
-To protect your privacy, please avoid posting security issues on GitHub. Instead, send your questions to security@can20.ai and we will provide you with a more detailed answer.
+We welcome contributions from the community! Please refer to our [Contributing Guidelines](CONTRIBUTING.md) (coming soon) for more information on how to get involved.
 
 ## License
 
-This repository is available under the [CAN20 Open Source License](LICENSE), which is essentially Apache 2.0 with a few additional restrictions.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Contact
+
+*   [Discord](link-to-discord) (coming soon)
+*   [Twitter](link-to-twitter) (coming soon)
+*   [Telegram](link-to-telegram) (coming soon)
+
+**Join us in building the future of Intent-Centric, AI-powered Web3 applications with ChainAINexus!**

@@ -70,7 +70,7 @@ const AppCard = ({
         </div>
       </div>
       {isExplore && canCreate && (
-        <div className={cn('hidden items-center flex-wrap min-h-[42px] px-[14px] pt-2 pb-[10px] bg-white group-hover:flex absolute bottom-0 left-0 right-0')}>
+        <div className={cn('hidden items-center flex-wrap min-h-[42px] px-[14px] pt-2 pb-[10px] bg-background-body group-hover:flex absolute bottom-0 left-0 right-0')}>
           <div className={cn('flex items-center w-full space-x-2')}>
             <Button variant='primary' className='grow h-7' onClick={() => onCreate()}>
               <PlusIcon className='w-4 h-4 mr-1' />
@@ -80,7 +80,7 @@ const AppCard = ({
         </div>
       )}
       {!isExplore && (
-        <div className={cn('hidden items-center flex-wrap min-h-[42px] px-[14px] pt-2 pb-[10px] bg-white group-hover:flex absolute bottom-0 left-0 right-0')}>
+        <div className={cn('hidden items-center flex-wrap min-h-[42px] px-[14px] pt-2 pb-[10px] bg-background-body group-hover:flex absolute bottom-0 left-0 right-0')}>
           <div className={cn('flex items-center w-full space-x-2')}>
             <Button variant='primary' className='grow h-7' onClick={() => onCreate()}>
               <PlusIcon className='w-4 h-4 mr-1' />

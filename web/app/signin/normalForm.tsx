@@ -85,7 +85,7 @@ const NormalForm = () => {
   }
   if (systemFeatures.license?.status === LicenseStatus.LOST) {
     return <div className='w-full mx-auto mt-8'>
-      <div className='bg-white'>
+      <div className='bg-background-body'>
         <div className="p-4 rounded-lg bg-gradient-to-r from-workflow-workflow-progress-bg-1 to-workflow-workflow-progress-bg-2">
           <div className='flex items-center justify-center w-10 h-10 rounded-xl bg-components-card-bg shadow shadows-shadow-lg mb-2 relative'>
             <RiContractLine className='w-5 h-5' />
@@ -138,7 +138,7 @@ const NormalForm = () => {
             <h2 className="title-4xl-semi-bold text-text-primary">{t('login.pageTitle')}</h2>
             <p className='mt-2 body-md-regular text-text-tertiary'>{t('login.welcome')}</p>
           </div>}
-        <div className="bg-white">
+        <div className="bg-background-body">
           <div className="flex flex-col gap-3 mt-6">
             {systemFeatures.enable_social_oauth_login && <SocialAuth />}
             {systemFeatures.sso_enforced_for_signin && <div className='w-full'>

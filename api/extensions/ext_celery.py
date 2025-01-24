@@ -4,8 +4,8 @@ import pytz
 from celery import Celery, Task  # type: ignore
 from celery.schedules import crontab  # type: ignore
 
-from configs import can20_config
 from can20_app import CAN20App
+from configs import can20_config
 
 
 def init_app(app: CAN20App) -> Celery:

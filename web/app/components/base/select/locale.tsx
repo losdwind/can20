@@ -23,9 +23,10 @@ export default function Select({
         <div>
           <Menu.Button className="inline-flex w-full h-[44px]justify-center items-center
           rounded-lg px-[10px] py-[6px]
-          text-gray-900 text-[13px] font-medium
-          border border-gray-200
-          hover:bg-gray-100">
+          text-[13px] font-medium
+          border border-components-button-secondary-border
+          text-components-button-secondary-text
+          bg-components-button-secondary-bg">
             <GlobeAltIcon className="w-5 h-5 mr-1" aria-hidden="true" />
             {item?.name}
           </Menu.Button>
@@ -39,7 +40,7 @@ export default function Select({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-[200px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+          <Menu.Items className="absolute right-0 mt-2 w-[200px] origin-top-right divide-y divide-gray-100 rounded-md bg-white text-components-menu-item-text shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
             <div className="px-1 py-1 ">
               {items.map((item) => {
                 return <Menu.Item key={item.value}>

@@ -5,8 +5,8 @@ from redis.cluster import ClusterNode, RedisCluster
 from redis.connection import Connection, SSLConnection
 from redis.sentinel import Sentinel
 
-from configs import can20_config
 from can20_app import CAN20App
+from configs import can20_config
 
 
 class RedisClientWrapper:

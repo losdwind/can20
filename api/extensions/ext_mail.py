@@ -3,8 +3,8 @@ from typing import Optional
 
 from flask import Flask
 
-from configs import can20_config
 from can20_app import CAN20App
+from configs import can20_config
 
 
 class Mail:
