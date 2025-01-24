@@ -51,7 +51,7 @@ const ProviderCard = ({
           )}
         </div>
         <div className='grow w-0 py-[1px]'>
-          <div className='flex items-center text-sm leading-5 font-semibold text-gray-800'>
+          <div className='flex items-center text-sm leading-5 font-semibold text-card'>
             <div className='truncate' title={collection.label[language]}>{collection.label[language]}</div>
           </div>
           <div className='flex items-center text-[10px] leading-[18px] text-gray-500 font-medium'>
