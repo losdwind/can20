@@ -33,9 +33,6 @@ The architecture is divided into three main layers:
 *   **Plugin Library:** Plugin Management, Storage & Distribution, Developer Support, Plugin Orchestration Library
 *   **Contract Library:** Governance Contract, Staking Contract, Revenue Sharing Contract, CAN PROTOCOL, Algorithm Library (NLP, Diffusion Models, TGAN, TTS)
 
-**Visual Representation:**
-![CAN Architecture Diagram](https://i.imgur.com/8j7lD9p.png)
-
 ## Key Features
 
 *   **Modular Plugin System:**
