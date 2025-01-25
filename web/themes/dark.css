@@ -121,7 +121,8 @@ html[data-theme="dark"] {
   --color-components-toggle-bg-unchecked-disabled: #FFFFFF14;
   --color-components-toggle-knob-hover: #FEFEFE;
 
-  --color-components-card-bg: #222225;
+  --color-components-card-bg: #2a2a2e;
+  --color-components-card-hover: #47474a;
   --color-components-card-border: #FFFFFF08;
   --color-components-card-bg-alt: #27272B;
 

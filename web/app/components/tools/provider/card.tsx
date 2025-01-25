@@ -36,7 +36,7 @@ const ProviderCard = ({
   }, [collection.labels, labelList, language])
 
   return (
-    <div className={cn('group col-span-1 bg-background-body border-2 border-solid border-transparent rounded-xl shadow-sm min-h-[160px] flex flex-col transition-all duration-200 ease-in-out cursor-pointer hover:shadow-lg', active && '!border-primary-400')} onClick={onSelect}>
+    <div className={cn('group col-span-1 bg-components-card-bg border-2 border-solid border-transparent rounded-xl shadow-sm min-h-[160px] flex flex-col transition-all duration-200 ease-in-out cursor-pointer hover:shadow-lg hover:bg-color-components-card-hover', active && '!border-primary-400')} onClick={onSelect}>
       <div className='flex pt-[14px] px-[14px] pb-3 h-[66px] items-center gap-3 grow-0 shrink-0'>
         <div className='relative shrink-0'>
           {typeof collection.icon === 'string' && (
@@ -51,10 +51,10 @@ const ProviderCard = ({
           )}
         </div>
         <div className='grow w-0 py-[1px]'>
-          <div className='flex items-center text-sm leading-5 font-semibold text-card'>
+          <div className='flex items-center text-sm leading-5 font-semibold text-text-primary'>
             <div className='truncate' title={collection.label[language]}>{collection.label[language]}</div>
           </div>
-          <div className='flex items-center text-[10px] leading-[18px] text-gray-500 font-medium'>
+          <div className='flex items-center text-[10px] leading-[18px] text-text-primary font-medium'>
             <div className='truncate'>{t('tools.author')}&nbsp;{collection.author}</div>
           </div>
         </div>

@@ -1,40 +1,3 @@
-![cover-v5-optimized](https://github.com/chainainexus/can20/assets/13230914/f9e19af5-61ba-4119-b926-d10c4c06ebab)
-
-<p align="center">
-  📌 <a href="https://can20.ai/blog/introducing-can20-workflow-file-upload-a-demo-on-ai-podcast">Introducing CAN20 Workflow File Upload: Recreate Google NotebookLM Podcast</a>
-</p>
-
-<p align="center">
-  <a href="https://cloud.can20.ai">CAN20 Cloud</a> ·
-  <a href="https://docs.can20.ai/getting-started/install-self-hosted">Self-hosting</a> ·
-  <a href="https://docs.can20.ai">Documentation</a> ·
-  <a href="https://ucan20.app/chat/22L1zSxg6yW1cWQg">Enterprise inquiry</a>
-</p>
-
-<p align="center">
-    <a href="https://can20.ai" target="_blank">
-        <img alt="Static Badge" src="https://img.shields.io/badge/Product-F04438"></a>
-    <a href="https://can20.ai/pricing" target="_blank">
-        <img alt="Static Badge" src="https://img.shields.io/badge/free-pricing?logo=free&color=%20%23155EEF&label=pricing&labelColor=%20%23528bff"></a>
-    <a href="https://discord.gg/FngNHpbcY7" target="_blank">
-        <img src="https://img.shields.io/discord/1082486657678311454?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
-            alt="chat on Discord"></a>
-    <a href="https://reddit.com/r/can20ai" target="_blank">  
-        <img src="https://img.shields.io/reddit/subreddit-subscribers/can20ai?style=plastic&logo=reddit&label=r%2Fcan20ai&labelColor=white"
-            alt="join Reddit"></a>
-    <a href="https://twitter.com/intent/follow?screen_name=can20_ai" target="_blank">
-        <img src="https://img.shields.io/twitter/follow/can20_ai?logo=X&color=%20%23f5f5f5"
-            alt="follow on X(Twitter)"></a>
-    <a href="https://hub.docker.com/u/chainainexus" target="_blank">
-        <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/chainainexus/can20-web?labelColor=%20%23FDB062&color=%20%23f79009"></a>
-    <a href="https://github.com/chainainexus/can20/graphs/commit-activity" target="_blank">
-        <img alt="Commits last month" src="https://img.shields.io/github/commit-activity/m/chainainexus/can20?labelColor=%20%2332b583&color=%20%2312b76a"></a>
-    <a href="https://github.com/chainainexus/can20/" target="_blank">
-        <img alt="Issues closed" src="https://img.shields.io/github/issues-search?query=repo%3Achainainexus%2Fcan20%20is%3Aclosed&label=issues%20closed&labelColor=%20%237d89b0&color=%20%235d6b98"></a>
-    <a href="https://github.com/chainainexus/can20/discussions/" target="_blank">
-        <img alt="Discussion posts" src="https://img.shields.io/github/discussions/chainainexus/can20?labelColor=%20%239b8afb&color=%20%237a5af8"></a>
-</p>
-
 # ChainAINexus (CAN)
 
 **A Modular AI + Web3 Architecture for the Next Generation Intent-Centric Platform**
@@ -100,7 +63,24 @@ CAN utilizes a robust and versatile technology stack:
 *   **Blockchain Interaction:** Web3.js / ethers.js
 *   **Containerization:** Docker
 
-## Getting Started
+## Quick start
+> Before installing CAN, make sure your machine meets the following minimum system requirements:
+> 
+>- CPU >= 2 Core
+>- RAM >= 4 GiB
+
+</br>
+
+The easiest way to start the CAN server is through [docker compose](docker/docker-compose.yaml). Before running CAN with the following commands, make sure that [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine:
+
+```bash
+cd can20
+cd docker
+cp .env.example .env
+docker compose up -d
+```
+
+After running, you can access the CAN dashboard in your browser at [http://localhost/install](http://localhost/install) and start the initialization process.
 
 *   **Developers:**
     *   Refer to the [Developer Documentation](docs/developer_guide.md) (coming soon) to learn how to build and deploy plugins.
