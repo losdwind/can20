@@ -4,7 +4,7 @@ import requests
 
 
 class CAN20Client:
-    def __init__(self, api_key, base_url: str = "https://api.can20.ai/v1"):
+    def __init__(self, api_key, base_url: str = "https://api.chainainexus.com/v1"):
         self.api_key = api_key
         self.base_url = base_url
 
@@ -162,7 +162,7 @@ class KnowledgeBaseClient(CAN20Client):
     def __init__(
         self,
         api_key,
-        base_url: str = "https://api.can20.ai/v1",
+        base_url: str = "https://api.chainainexus.com/v1",
         dataset_id: str | None = None,
     ):
         """
@@ -170,7 +170,7 @@ class KnowledgeBaseClient(CAN20Client):
 
         Args:
             api_key (str): API key of CAN20.
-            base_url (str, optional): Base URL of CAN20 API. Defaults to 'https://api.can20.ai/v1'.
+            base_url (str, optional): Base URL of CAN20 API. Defaults to 'https://api.chainainexus.com/v1'.
             dataset_id (str, optional): ID of the dataset. Defaults to None. You don't need this if you just want to
                 create a new dataset. or list datasets. otherwise you need to set this.
         """

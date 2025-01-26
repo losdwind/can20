@@ -190,13 +190,13 @@ const NormalForm = () => {
             <Link
               className='system-xs-medium text-text-secondary hover:underline'
               target='_blank' rel='noopener noreferrer'
-              href='https://can20.ai/terms'
+              href='https://chainainexus.com/terms'
             >{t('login.tos')}</Link>
             &nbsp;&&nbsp;
             <Link
               className='system-xs-medium text-text-secondary hover:underline'
               target='_blank' rel='noopener noreferrer'
-              href='https://can20.ai/privacy'
+              href='https://chainainexus.com/privacy'
             >{t('login.pp')}</Link>
           </div>
           {IS_CE_EDITION && <div className="w-hull block mt-2 system-xs-regular text-text-tertiary">

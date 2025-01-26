@@ -407,7 +407,7 @@ class UpdateConfig(BaseSettings):
 
     CHECK_UPDATE_URL: str = Field(
         description="URL to check for application updates",
-        default="https://updates.can20.ai",
+        default="https://updates.chainainexus.com",
     )
 
 

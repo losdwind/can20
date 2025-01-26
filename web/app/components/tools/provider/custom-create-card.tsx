@@ -27,8 +27,8 @@ const Contribute = ({ onRefreshData }: Props) => {
 
   const linkUrl = useMemo(() => {
     if (language.startsWith('zh_'))
-      return 'https://docs.can20.ai/zh-hans/guides/tools#ru-he-chuang-jian-zi-ding-yi-gong-ju'
-    return 'https://docs.can20.ai/guides/tools#how-to-create-custom-tools'
+      return 'https://docs.chainainexus.com/zh-hans/guides/tools#ru-he-chuang-jian-zi-ding-yi-gong-ju'
+    return 'https://docs.chainainexus.com/guides/tools#how-to-create-custom-tools'
   }, [language])
 
   const [isShowEditCollectionToolModal, setIsShowEditCustomCollectionModal] = useState(false)

@@ -187,7 +187,7 @@ class HostedFetchAppTemplateConfig(BaseSettings):
 
     HOSTED_FETCH_APP_TEMPLATES_REMOTE_DOMAIN: str = Field(
         description="Domain for fetching remote app templates",
-        default="https://tmpl.can20.ai",
+        default="https://tmpl.chainainexus.com",
     )
 
 

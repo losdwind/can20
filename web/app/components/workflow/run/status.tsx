@@ -134,7 +134,7 @@ const StatusPanel: FC<ResultProps> = ({
             <div className='system-xs-medium text-text-warning'>
               {error}
               <a
-                href='https://docs.can20.ai/guides/workflow/error-handling/error-type'
+                href='https://docs.chainainexus.com/guides/workflow/error-handling/error-type'
                 target='_blank'
                 className='text-text-accent'
               >

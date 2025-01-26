@@ -161,7 +161,7 @@ const InstallForm = () => {
               <Link
                 className='underline text-components-button-ghost-text'
                 target='_blank' rel='noopener noreferrer'
-                href={'https://docs.can20.ai/user-agreement/open-source'}
+                href={'https://docs.chainainexus.com/user-agreement/open-source'}
               >{t('login.license.link')}</Link>
             </div>
           </div>

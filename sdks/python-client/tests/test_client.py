@@ -11,7 +11,7 @@ from can20_client.client import (
 
 API_KEY = os.environ.get("API_KEY")
 APP_ID = os.environ.get("APP_ID")
-API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.can20.ai/v1")
+API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.chainainexus.com/v1")
 FILE_PATH_BASE = os.path.dirname(__file__)
 
 

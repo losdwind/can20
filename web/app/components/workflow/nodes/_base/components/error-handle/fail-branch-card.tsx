@@ -17,7 +17,7 @@ const FailBranchCard = () => {
           {t('workflow.nodes.common.errorHandle.failBranch.customizeTip')}
           &nbsp;
           <a
-            href='https://docs.can20.ai/guides/workflow/error-handling'
+            href='https://docs.chainainexus.com/guides/workflow/error-handling'
             target='_blank'
             className='text-text-accent'
           >

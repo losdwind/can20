@@ -6,9 +6,9 @@ export const useNodeHelpLink = (nodeType: BlockEnum) => {
   const language = useGetLanguage()
   const prefixLink = useMemo(() => {
     if (language === 'zh_Hans')
-      return 'https://docs.can20.ai/v/zh-hans/guides/workflow/node/'
+      return 'https://docs.chainainexus.com/v/zh-hans/guides/workflow/node/'
 
-    return 'https://docs.can20.ai/guides/workflow/node/'
+    return 'https://docs.chainainexus.com/guides/workflow/node/'
   }, [language])
   const linkMap = useMemo(() => {
     if (language === 'zh_Hans') {

@@ -45,8 +45,8 @@ export default function AccountAbout({
                 IS_CE_EDITION
                   ? <Link href={'https://github.com/chainainexus/can20/blob/main/LICENSE'} target='_blank' rel='noopener noreferrer'>Open Source License</Link>
                   : <>
-                    <Link href='https://can20.ai/privacy' target='_blank' rel='noopener noreferrer'>Privacy Policy</Link>,<span> </span>
-                    <Link href='https://can20.ai/terms' target='_blank' rel='noopener noreferrer'>Terms of Service</Link>
+                    <Link href='https://chainainexus.com/privacy' target='_blank' rel='noopener noreferrer'>Privacy Policy</Link>,<span> </span>
+                    <Link href='https://chainainexus.com/terms' target='_blank' rel='noopener noreferrer'>Terms of Service</Link>
                   </>
               }
             </div>

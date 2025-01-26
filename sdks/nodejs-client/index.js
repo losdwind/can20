@@ -1,5 +1,5 @@
 import axios from "axios";
-export const BASE_URL = "https://api.can20.ai/v1";
+export const BASE_URL = "https://api.chainainexus.com/v1";
 
 export const routes = {
   //  app's

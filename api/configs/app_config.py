@@ -62,7 +62,7 @@ class CAN20Config(
     # Remote source configs
     RemoteSettingsSourceConfig,
     # Enterprise feature configs
-    # **Before using, please contact business@can20.ai by email to inquire about licensing matters.**
+    # **Before using, please contact business@chainainexus.com by email to inquire about licensing matters.**
     EnterpriseFeatureConfig,
 ):
     model_config = SettingsConfigDict(

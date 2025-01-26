@@ -126,8 +126,8 @@ const ExtraInfo = ({ isMobile, relatedApps, expand }: IExtraInfoProps) => {
               className='inline-flex items-center text-xs text-text-accent mt-2 cursor-pointer'
               href={
                 locale === LanguagesSupported[1]
-                  ? 'https://docs.can20.ai/v/zh-hans/guides/knowledge-base/integrate-knowledge-within-application'
-                  : 'https://docs.can20.ai/guides/knowledge-base/integrate-knowledge-within-application'
+                  ? 'https://docs.chainainexus.com/v/zh-hans/guides/knowledge-base/integrate-knowledge-within-application'
+                  : 'https://docs.chainainexus.com/guides/knowledge-base/integrate-knowledge-within-application'
               }
               target='_blank' rel='noopener noreferrer'
             >
@@ -207,7 +207,7 @@ const DatasetDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
     <div className='grow flex overflow-hidden'>
       {!hideSideBar && <AppSideBar
         title={datasetRes?.name || '--'}
-        icon={datasetRes?.icon || 'https://static.can20.ai/images/dataset-default-icon.png'}
+        icon={datasetRes?.icon || 'https://static.chainainexus.com/images/dataset-default-icon.png'}
         icon_background={datasetRes?.icon_background || '#F5F5F5'}
         desc={datasetRes?.description || '--'}
         isExternal={datasetRes?.provider === 'external'}

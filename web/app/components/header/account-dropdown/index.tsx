@@ -161,7 +161,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                           active && 'bg-state-base-hover',
                         )}
                         href={
-                          locale !== LanguagesSupported[1] ? 'https://docs.can20.ai/' : `https://docs.can20.ai/v/${locale.toLowerCase()}/`
+                          locale !== LanguagesSupported[1] ? 'https://docs.chainainexus.com/' : `https://docs.chainainexus.com/v/${locale.toLowerCase()}/`
                         }
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.helpCenter')}</div>
@@ -173,7 +173,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                         className={classNames(itemClassName, 'group justify-between',
                           active && 'bg-state-base-hover',
                         )}
-                        href='https://roadmap.can20.ai'
+                        href='https://roadmap.chainainexus.com'
                         target='_blank' rel='noopener noreferrer'>
                         <div>{t('common.userProfile.roadmap')}</div>
                         <ArrowUpRight className='hidden w-[14px] h-[14px] text-text-tertiary group-hover:flex' />

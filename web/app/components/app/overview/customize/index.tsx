@@ -101,7 +101,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
         className='mt-2'
         onClick={() =>
           window.open(
-            `https://docs.can20.ai/${locale !== LanguagesSupported[1]
+            `https://docs.chainainexus.com/${locale !== LanguagesSupported[1]
               ? 'user-guide/launching-can20-apps/developing-with-apis'
               : `v/${locale.toLowerCase()}/guides/application-publishing/developing-with-apis`
             }`,

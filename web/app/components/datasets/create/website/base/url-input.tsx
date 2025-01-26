@@ -32,7 +32,7 @@ const UrlInput: FC<Props> = ({
       <Input
         value={url}
         onChange={handleUrlChange}
-        placeholder='https://docs.can20.ai'
+        placeholder='https://docs.chainainexus.com'
       />
       <Button
         variant='primary'

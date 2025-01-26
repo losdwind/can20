@@ -7,7 +7,7 @@ setup(
     name="can20-client",
     version="0.1.12",
     author="CAN20",
-    author_email="hello@can20.ai",
+    author_email="hello@chainainexus.com",
     description="A package for interacting with the CAN20 Service-API",
     long_description=long_description,
     long_description_content_type="text/markdown",
