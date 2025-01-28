@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { useBoolean } from 'ahooks'
 import { useSelectedLayoutSegment } from 'next/navigation'
-import { Bars3Icon } from '@heroicons/react/20/solid'
+import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/20/solid'
 import { useContextSelector } from 'use-context-selector'
 import HeaderBillingBtn from '../billing/header-billing-btn'
 import AccountDropdown from './account-dropdown'
@@ -21,6 +21,7 @@ import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import { useProviderContext } from '@/context/provider-context'
 import { useModalContext } from '@/context/modal-context'
 import { LicenseStatus } from '@/types/feature'
+import { Theme } from '@/types/app'
 
 const navClassName = `
   flex items-center relative mr-0 sm:mr-3 px-3 h-8 rounded-xl
@@ -29,7 +30,7 @@ const navClassName = `
 `
 
 const Header = () => {
-  const { isCurrentWorkspaceEditor, isCurrentWorkspaceDatasetOperator } = useAppContext()
+  const { isCurrentWorkspaceEditor, isCurrentWorkspaceDatasetOperator, theme, setTheme } = useAppContext()
   const systemFeatures = useContextSelector(AppContext, v => v.systemFeatures)
   const selectedSegment = useSelectedLayoutSegment()
   const media = useBreakpoints()
@@ -44,6 +45,11 @@ const Header = () => {
     else
       setShowAccountSettingModal({ payload: 'billing' })
   }, [isFreePlan, setShowAccountSettingModal, setShowPricingModal])
+
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === Theme.dark ? Theme.light : Theme.dark
+    setTheme(newTheme)
+  }, [theme, setTheme])
 
   useEffect(() => {
     hideNavMenu()
@@ -82,8 +88,23 @@ const Header = () => {
         </div>
       )}
       <div className='flex items-center flex-shrink-0'>
+
         <LicenseNav />
+
         <EnvNav />
+        <button
+          onClick={toggleTheme}
+          className='p-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+          aria-label='Toggle theme'
+        >
+          {theme === Theme.dark
+            ? (
+              <SunIcon className='h-5 w-5' />
+            )
+            : (
+              <MoonIcon className='h-5 w-5' />
+            )}
+        </button>
         {enableBilling && (
           <div className='mr-3 select-none'>
             <HeaderBillingBtn onClick={handlePlanClick} />
