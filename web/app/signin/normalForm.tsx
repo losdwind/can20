@@ -151,7 +151,7 @@ const NormalForm = () => {
               <div className='bg-gradient-to-r from-background-gradient-mask-transparent via-divider-regular to-background-gradient-mask-transparent h-px w-full'></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="px-2 text-text-tertiary system-xs-medium-uppercase bg-white">{t('login.or')}</span>
+              <span className="px-2 text-text-tertiary system-xs-medium-uppercase bg-background-body">{t('login.or')}</span>
             </div>
           </div>}
           {
